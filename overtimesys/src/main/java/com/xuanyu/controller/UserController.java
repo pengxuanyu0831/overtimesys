@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
     private UserMapper userMapper;
 
     /* @RequestMapping (value = "/pwd" , method = RequestMethod.POST)
-     * 这样也行
+     * 这样也行 2020-04-05
      */
     @PostMapping (value = "/pwd")
     public String pwdTest(@RequestParam("userid") int userid ,Model model){
