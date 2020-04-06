@@ -3,6 +3,8 @@ package com.xuanyu.dao;
 import com.xuanyu.model.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.Scanner;
+
 
 @Repository
 public interface UserMapper {
@@ -12,7 +14,8 @@ public interface UserMapper {
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(Scanner id);
+    // User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
 

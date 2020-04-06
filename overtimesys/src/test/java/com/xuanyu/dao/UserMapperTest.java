@@ -33,15 +33,11 @@ public class UserMapperTest {
     @Test
     public void testinstert() throws Exception{
         User user = new User();
-        // Integer id = 1;
-        // new user.setId("77777");
         user.setName("xuanyutest777777777777777");
         user.setPassword("736499");
         user.setEmail("abcdecf@gmail.com");
         int result = userMapper.insert(user);
-        // int result = userMapper.selectByPrimaryKey();
         System.out.println(result);
-        // System.out.println(result1);
         assert (result==1);
 
     }
@@ -49,7 +45,8 @@ public class UserMapperTest {
     public void testselect()throws Exception{
         User user = new User();
         Scanner sc = new Scanner(System.in);
-        int result1 = user.getId(sc);
+        user.getId(sc);
+        User result1 = userMapper.selectByPrimaryKey(sc);
         while (sc.hasNext()){
             System.out.println(result1+sc.next());
         }
