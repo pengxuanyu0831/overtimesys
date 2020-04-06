@@ -1,4 +1,4 @@
-package com.xuanyu.xuanyu.dao;
+package com.xuanyu.dao;
 
 import com.xuanyu.model.User;
 import com.xuanyu.dao.UserMapper;
@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Scanner;
 
 public class UserMapperTest {
 
@@ -37,10 +39,19 @@ public class UserMapperTest {
         user.setPassword("736499");
         user.setEmail("abcdecf@gmail.com");
         int result = userMapper.insert(user);
-        // User result1 = userMapper.selectByPrimaryKey(id);
+        // int result = userMapper.selectByPrimaryKey();
         System.out.println(result);
         // System.out.println(result1);
         assert (result==1);
 
+    }
+    @Test
+    public void testselect()throws Exception{
+        User user = new User();
+        Scanner sc = new Scanner(System.in);
+        int result1 = user.getId(sc);
+        while (sc.hasNext()){
+            System.out.println(result1+sc.next());
+        }
     }
 }

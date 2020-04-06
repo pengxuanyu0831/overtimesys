@@ -1,5 +1,7 @@
 package com.xuanyu.model;
 
+import java.util.Scanner;
+
 /**
  * @author admin
  */
@@ -12,18 +14,17 @@ public class User {
 
     private String password;
 
-    public Integer getId() {
+    public Integer getId(Scanner sc) {
         return id;
     }
+
+    public Integer getid(){ return  id; }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
