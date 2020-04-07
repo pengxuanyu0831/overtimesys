@@ -44,4 +44,7 @@
       </if>
     </trim>
   </insert>
+  <select id="selectByPrimaryKey" parameterType="com.xuanyu.model.User" resultType="int">
+    select * from user where id =1;
+  </select>
 </mapper>
