@@ -2,6 +2,7 @@ package com.xuanyu.dao;
 
 import com.xuanyu.model.User;
 import com.xuanyu.dao.UserMapper;
+import com.xuanyu.service.UserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,37 +19,45 @@ public class UserMapperTest {
     @Autowired
     private UserMapper userMapper;
 
-    @Before
-    public void setUp() throws Exception {
+    @Test
+    public void testfindUser() throws Exception {
         //spring 配置文件
         applicationContext = new ClassPathXmlApplicationContext("classpath:/spring/applicationContext.xml");
         //测试用Mapper
-        userMapper = applicationContext.getBean(UserMapper.class);
+        UserService us = (UserService) applicationContext.getBean("usersService");
+        //调用方法
+        us.findUsers();
+//        userMapper = applicationContext.getBean(UserMapper.class);
+//        userMapper.findUsers();
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
 
-    @Test
-    public void testinstert() throws Exception{
-        User user = new User();
-        user.setName("xuanyutest777777777777777");
-        user.setPassword("736499");
-        user.setEmail("abcdecf@gmail.com");
-        int result = userMapper.insert(user);
-        System.out.println(result);
-        assert (result==1);
+
+    // =======================================================================
+//
+//    @After
+//    public void tearDown() throws Exception {
+//    }
+
+//    @Test
+//    public void testinstert() throws Exception{
+//        User user = new User();
+//        user.setName("xuanyutest777777777777777");
+//        user.setPassword("736499");
+//        user.setEmail("abcdecf@gmail.com");
+//        int result = userMapper.insert(user);
+//        System.out.println(result);
+//        assert (result==1);
 
     }
-    @Test
-    public void testselect()throws Exception{
-        User user = new User();
-        Scanner sc = new Scanner(System.in);
-        user.getId(sc);
-        User result1 = userMapper.selectByPrimaryKey(sc);
-        while (sc.hasNext()){
-            System.out.println(result1+sc.next());
-        }
-    }
-}
+//    @Test
+//    public void testselect()throws Exception{
+//        User user = new User();
+//        Scanner sc = new Scanner(System.in);
+//        user.getId(sc);
+//        User result1 = userMapper.selectByPrimaryKey(sc);
+//        while (sc.hasNext()){
+//            System.out.println(result1+sc.next());
+//        }
+//    }
+//}
