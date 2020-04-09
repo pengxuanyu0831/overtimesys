@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author pengxy
+ * @version UpToBlog V0.1
  */
 public class User {
     private Integer id;

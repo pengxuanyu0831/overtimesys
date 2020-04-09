@@ -45,6 +45,10 @@
     </trim>
   </insert>
   <select id="selectByPrimaryKey" resultType="com.xuanyu.model.User" >
-    select * from user where id =1;
+    select * from user where id =${id,jdbcType=INTEGER}
+    <if test="_parameter != null">
+        
+    </if>
+    /* #{id,jdbcType=INTEGER} */
   </select>
 </mapper>
