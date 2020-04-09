@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>跳转成功</title>
+    <title>查询</title>
 </head>
 <body>
-用户名：${username}
-密码：${password}
+<h3>查询所有用户</h3>
 </body>
 </html>
