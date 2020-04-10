@@ -11,10 +11,7 @@
     <title>登录页</title>
 </head>
 <body>
-<form id="report" action="user/pwd" method="post">
-    用户ID<input type="text" id=“id” name="id"/>
-    <input type="submit" value="查询密码"/>
-</form>
+<a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
 </body>
 </html>
 

@@ -27,12 +27,6 @@ import java.util.Scanner;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    /**
-     * 查询用户
-     * @param model
-     * @return
-     */
     @RequestMapping("/findUser")
     public String findUsers(Model model){
         System.out.println("表现层：查询用户");
