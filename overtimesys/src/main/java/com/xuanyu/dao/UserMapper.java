@@ -31,10 +31,10 @@ public interface UserMapper{
     @Select("select * from user")
     public List<User> findUsers();
     // 用户注册
-    @Insert("INSERT INTO USER (username,PASSWORD) VALUES(#{username},#{PASSWORD})")
+    @Insert("INSERT INTO USER (name,password,email) VALUES(#{name},#{password},#{email})")
     public void insetrUser(User user);
     // 用户登录
-    @Select("select * from user where username=#{username} and PASSWORD=#{PASSWORD}")
+    @Select("select * from user where name=#{name} and password=#{password}")
     public User login(User user);
 
     // void findUser();
