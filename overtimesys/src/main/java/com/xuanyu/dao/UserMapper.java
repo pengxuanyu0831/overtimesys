@@ -25,7 +25,7 @@ import java.util.Scanner;
 //
 //    int updateByPrimaryKey(User record);
 //}
-
+@Repository
 public interface UserMapper{
     // 查询全部用户
     @Select("select * from user")

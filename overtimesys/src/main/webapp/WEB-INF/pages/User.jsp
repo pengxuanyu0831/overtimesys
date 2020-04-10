@@ -12,5 +12,6 @@
 </head>
 <body>
 <h3>查询所有用户</h3>
+${list}
 </body>
 </html>
