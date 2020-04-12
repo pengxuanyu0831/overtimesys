@@ -4,9 +4,8 @@
     <data-source source="LOCAL" name="localhost" uuid="c87480a1-cde4-4ce3-9b8b-17dfba5f4e5c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springdb</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/springdb?useUnicode=true&amp;serverTimezone=GMT</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />

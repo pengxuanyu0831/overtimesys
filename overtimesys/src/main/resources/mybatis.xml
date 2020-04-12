@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置环境 -->
+    <environments default="mysql">
+        <environment id="mysql">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/springdb?useUnicode=true&amp;serverTimezone=UTC&amp;characterEncoding=utf-8&amp;useSSL=false"/>
+                <property name="username" value="pengxy"/>
+                <property name="password" value="736499"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 引入映射配置文件 -->
+    <mappers>
+        <package name="com.xuanyu.dao"/>
+    </mappers>
+</configuration>
+
+        <!-- 将配置放到applicationContext.xml （spring的配置文件)之后 ,mybatis.xml就失去作用了，我保留仅供参考学习-->
