@@ -22,8 +22,8 @@
 
 <div id = "particles-js"></div>
 
-<script scr="js/particles.min.js"></script>
-<script scr ="js/app.js"></script>
+<script src="js/particles.min.js"></script>
+<script src ="js/app.js"></script>
 
 
 <script src="js/stats.js"></script>
