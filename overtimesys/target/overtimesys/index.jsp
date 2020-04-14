@@ -20,10 +20,28 @@
     <span class="js-count-particles">--</span> particles
 </div>
 
-<div id = "particles-js"></div>
+<div id = "particles-js">
+    <div id = "loginin">
+        <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
+        <hr>
+        <form method="post" action="${pageContext.request.contextPath}/users/insert">
+            用户名: <input type = "text" name = "name"><br>
+            密码：<input type = "text" name = "password"><br>
+            邮箱：<input type = "text" name = "email"><br>
+            <input type = "submit" name = "注册"><br>
+        </form>
+        <hr>
+        <form method="post" action="${pageContext.request.contextPath}/users/login">
+            用户名: <input type = "text" name = "name"><br>
+            密码: <input type ="text" name = "password"><br>
+            <input type = "submit" name = "查询"><br>
+        </form>
+        <hr>
+    </div>
+</div>
 
-<script scr="js/particles.min.js"></script>
-<script scr ="js/app.js"></script>
+<script src="js/particles.min.js"></script>
+<script src ="js/app.js"></script>
 
 
 <script src="js/stats.js"></script>
@@ -47,21 +65,9 @@
     requestAnimationFrame(update);
 </script>
 
-<a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
-<hr>
-<form method="post" action="${pageContext.request.contextPath}/users/insert">
-    用户名: <input type = "text" name = "name"><br>
-    密码：<input type = "text" name = "password"><br>
-    邮箱：<input type = "text" name = "email"><br>
-    <input type = "submit" name = "注册"><br>
-</form>
-<hr>
-<form method="post" action="${pageContext.request.contextPath}/users/login">
-    用户名: <input type = "text" name = "name"><br>
-    密码: <input type ="text" name = "password"><br>
-    <input type = "submit" name = "查询"><br>
-</form>
-<hr>
+
+
+
 
 </body>
 </html>
