@@ -13,6 +13,8 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel ="stylesheet" media="screen" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 </head>
 <body>
 
@@ -25,18 +27,44 @@
         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
         <hr>
         <form method="post" action="${pageContext.request.contextPath}/users/insert">
-            用户名: <input type = "text" name = "name"><br>
-            密码：<input type = "text" name = "password"><br>
-            邮箱：<input type = "text" name = "email"><br>
-            <input type = "submit" name = "注册"><br>
+            <div class = "form-group">
+                <label class="col-lg-3 control-label">用户名:</label>
+                <div class="col-lg-4">
+                    <input type = "text" name = "name">
+                </div>
+                <label class="col-lg-3 control-label">密码:</label>
+                <div class="col-lg-4">
+                    <input type = "text" name = "password">
+                </div>
+                <label class="col-lg-3 control-label">邮箱:</label>
+                <div class="col-lg-4">
+                    <input type = "text" name = "email">
+                </div>
+                <div class = "form-group">
+                    <div class = "col-lg-9 col-lg-offset-2">
+                        <button type = "submit" class = " btn btn-primary" name = "注册" >注册</button>
+                    </div>
+                </div>
         </form>
         <hr>
+
         <form method="post" action="${pageContext.request.contextPath}/users/login">
-            用户名: <input type = "text" name = "name"><br>
-            密码: <input type ="text" name = "password"><br>
-            <input type = "submit" name = "查询"><br>
+            <div class = "form-group">
+                <label class ="col-lg-3 control-label">用户名:</label>
+                <div class ="col-lg-4">
+                    <input type = "text" name = "name">
+                </div>
+                <label class ="col-lg-3 control-label">密码:</label>
+                <div class ="col-lg-4">
+                    <input type ="text" name = "password">
+                </div>
+                <div class = "form-group">
+                    <div class = "col-lg-9 col-lg=offset-2">
+                        <button type = "submit" class = "btn btn-primary" name ="查询">登录</button>
+                    </div>
+                </div>
+            </div>
         </form>
-        <hr>
     </div>
 </div>
 
