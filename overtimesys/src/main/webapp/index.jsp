@@ -32,7 +32,7 @@
                         <h2>Sign up</h2>
                     </div>
 
-                    <div id = "login">
+                    <section id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
                         <form method="post" action="${pageContext.request.contextPath}/users/insert">
@@ -46,7 +46,7 @@
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">密码:</label>
                                 <div class="col-lg-4">
-                                        <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
+                                    <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
                                 </div>
                             </div>
 
@@ -56,13 +56,21 @@
                                     <input type = "text" name = "email">
                                 </div>
                             </div>
-
                                 <div class = "col-lg-offset-2">
                                     <button type = "submit" class = " btn btn-primary" name = "Registered" >注册</button>
                                 </div>
                         </form>
-                        <hr>
-
+                    </section>
+                </div>
+             </section>             
+        </div>
+     </div>
+</div>
+     <div class="container" style="margin-top: 50px;">
+         <div class="row">
+             <section>
+                 <div class="col-lg-8 col-lg-offset-2">
+                     <div class = "page-header">
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
                                 <label class ="col-lg-4 control-label">用户名:</label>
@@ -84,6 +92,8 @@
                     </div>
                 </div>
             </section>
+
+
 <script src="js/particles.min.js"></script>
 <script src ="js/app.js"></script>
 
@@ -108,6 +118,10 @@
     };
     requestAnimationFrame(update);
 </script>
+
+
+
+
         </div>
     </div>
 </div>
