@@ -6,3 +6,6 @@ Mybaitis 3.4.4
 Mysql 5.7.28
 tomcat 7.0.1
 jdk 1.8
+
+
+bootstrap逻辑做前端校验，邮箱校验
