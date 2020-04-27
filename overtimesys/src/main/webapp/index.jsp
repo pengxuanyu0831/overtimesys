@@ -15,6 +15,8 @@
     <link rel ="stylesheet" media="screen" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <script type ="text/javascript" src = "js/jquery-1.10.2.min.js"></script>
+    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
     <meta http-equiv="X-UA-Compattible" content="IE = edge">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
 </head>
@@ -40,7 +42,9 @@
                                 <label class="col-lg-3 control-label">用户名:</label>
                                 <div class="col-lg-4 ">
                                     <input type = "text" name = "name" placeholder="请输入用户名"
-                                    >
+                                           required  data-bv-notempty-message="用户名不能为空"
+                                    data-bv-stringlength ="true" data-bv-stringlength-min = "4"
+                                    data-bv-stringlength-max = "12" data-bv-stringlength-message ="用户名至少4个字符，最大不超过12个字符."/>
                                 </div>
                             </div>
 
@@ -87,8 +91,6 @@
             </section>
             <script src="js/particles.min.js"></script>
             <script src ="js/app.js"></script>
-
-
             <script src="js/stats.js"></script>
             <script>
                 var count_particles, stats, update;
@@ -108,6 +110,16 @@
                     requestAnimationFrame(update);
                 };
                 requestAnimationFrame(update);
+            </script>
+            <script type ="text/javascript">
+                $(function(){
+                    $('form').bootstrapValidator({
+                        message:" 用户名不能为空",
+                        feedbackIcon: {
+                            valid:""
+                        }
+                    })
+                })
             </script>
         </div>
     </div>
