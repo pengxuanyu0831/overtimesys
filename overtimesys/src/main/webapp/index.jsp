@@ -39,7 +39,8 @@
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">用户名:</label>
                                 <div class="col-lg-4 ">
-                                    <input type = "text" name = "name">
+                                    <input type = "text" name = "name" placeholder="请输入用户名"
+                                    >
                                 </div>
                             </div>
 
