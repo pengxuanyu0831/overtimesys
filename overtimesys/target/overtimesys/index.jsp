@@ -12,11 +12,22 @@
     <title>hello moto</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
+
+    <!--bootstrap & bootstrapValidator  -->
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/bootstrapValidator.css"/>
+    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
+
+    <!--jQuery -->
+    <script type ="text/javascript" src = "js/jquery-1.10.2.min.js"></script>
+
     <meta http-equiv="X-UA-Compattible" content="IE = edge">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
+    <!-- 注册校验规则-->
+    <script src = "js/registered.js"></script>
 </head>
 <body>
 
@@ -35,11 +46,11 @@
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
-                        <form method="post" action="${pageContext.request.contextPath}/users/insert">
+                        <form id = "RegisterForm" method="post" action="${pageContext.request.contextPath}/users/insert">
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">用户名:</label>
                                 <div class="col-lg-4 ">
-                                    <input type = "text" name = "name">
+                                    <input type = "text" name = "name" placeholder="请输入用户名"/>
                                 </div>
                             </div>
 
@@ -86,8 +97,6 @@
             </section>
             <script src="js/particles.min.js"></script>
             <script src ="js/app.js"></script>
-
-
             <script src="js/stats.js"></script>
             <script>
                 var count_particles, stats, update;
@@ -108,6 +117,8 @@
                 };
                 requestAnimationFrame(update);
             </script>
+
+
         </div>
     </div>
 </div>
