@@ -16,18 +16,23 @@
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
 
-    <!--bootstrap & bootstrapValidator  -->
-    <link rel="stylesheet" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/bootstrapValidator.css"/>
-    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
-
     <!--jQuery -->
-    <script type ="text/javascript" src = "js/jquery-3.1.1.js"></script>
+    <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
+    <!--bootstrap & bootstrapValidator  -->
+    <link rel="stylesheet" href = "css/bootstrap.css"/>
+    <link rel="stylesheet" href = "css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
+
+    <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
+    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
+    <!-- 自定义的校验规则-->
+    <script type ="text/javascript" src = "js/registered.js"></script>
 
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
-    <!-- 注册校验规则-->
-    <script src = "js/registered.js"></script>
+
+    <!-- 登录校验柜子-->
 </head>
 <body>
 
