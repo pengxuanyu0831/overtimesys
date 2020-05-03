@@ -32,7 +32,6 @@
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
 
-    <!-- 登录校验柜子-->
 </head>
 <body>
 
@@ -51,11 +50,14 @@
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
-                        <form id = "RegisterForm" method="post" action="${pageContext.request.contextPath}/users/insert">
+                        <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insert">
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">用户名:</label>
                                 <div class="col-lg-4 ">
-                                    <input type = "text" name = "name" placeholder="请输入用户名"/>
+                                    <input type = "text" name = "name" placeholder="请输入用户名"
+                                    data-bv-notempty
+                                    data-bv-notempty-message = "姓名不能为空"
+                                    >
                                 </div>
                             </div>
 
@@ -69,7 +71,7 @@
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">邮箱:</label>
                                 <div class="col-lg-4">
-                                    <input type = "text" name = "email">
+                                    <input type = "text" name = "email" placeholder="请输入邮箱地址">
                                 </div>
                             </div>
 
@@ -127,5 +129,52 @@
         </div>
     </div>
 </div>
+<script>
+    $(function(){
+        // 校验规则
+        $('RegisterForm').bootstrapValidator({
+            message:"不能为空",
+            feedbackIcon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                'name' :{
+                    message:'用户名无效',
+                    validators:{
+                        notEmpty:{
+                            message:'用户名不能为空'
+                        },
+                        stringLength:{
+                            min:4,
+                            max:16,
+                            message:'用户名长度在4 ~ 16个字符之间'
+                        }
+                    }
+                },
+                'email':{
+                    validators:{
+                        emailAddress:{
+                            message:'请输入有效的邮箱格式'
+                        }
+                    }
+                }
+            }
+        })
+
+            .on('success.form.bv',function (e) {
+                e.preventDefault();
+                var $form = $(e.target);
+                var bv = $form.data('bootstrapValidator').validateField('name');
+
+
+                $post($form.attr('action',$form.serialize(),function (result) {
+                    $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+                }))
+            })
+
+    });
+</script>
 </body>
 </html>
