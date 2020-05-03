@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: admin
+  User: pengxy
   Date: 2020/3/30
   Time: 17:02
   To change this template use File | Settings | File Templates.
@@ -22,9 +22,9 @@
     <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
 
     <!--jQuery -->
-    <script type ="text/javascript" src = "js/jquery-1.10.2.min.js"></script>
+    <script type ="text/javascript" src = "js/jquery-3.1.1.js"></script>
 
-    <meta http-equiv="X-UA-Compattible" content="IE = edge">
+    <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
     <!-- 注册校验规则-->
     <script src = "js/registered.js"></script>
