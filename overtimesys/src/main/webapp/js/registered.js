@@ -34,10 +34,10 @@
     .on('success.form.bv',function (e) {
         e.preventDefault();
         var $form = $(e.target);
-        var bv = $form.data('bootstrapValidator').validateField('name');
+        var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
 
 
-        $post($form.attr('action',$form.serialize(),function (result) {
+        $post($form.attr('action',$form.serialize(),function () {
             $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
         }))
     })

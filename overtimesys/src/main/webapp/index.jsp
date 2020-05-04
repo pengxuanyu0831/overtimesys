@@ -35,6 +35,7 @@
 </head>
 <body>
 
+
 <div class="count-particles">
     <span class="js-count-particles">--</span> particles
 </div>
@@ -76,7 +77,7 @@
                             </div>
 
                             <div class = "col-lg-offset-2">
-                                <button type = "submit" class = " btn btn-primary" name = "Registered" >注册</button>
+                                <button type = "submit" class = " btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
                             </div>
                         </form>
                         <hr>
@@ -161,20 +162,27 @@
                     }
                 }
             }
-        })
-
-            .on('success.form.bv',function (e) {
-                e.preventDefault();
-                var $form = $(e.target);
-                var bv = $form.data('bootstrapValidator').validateField('name');
-
-
-                $post($form.attr('action',$form.serialize(),function (result) {
-                    $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
-                }))
-            })
-
+        });
+        // 校验的是button，所以要写上button的id
+        $('#RegisteredBtn').click(function() {
+            $('#RegisterForm').bootstrapValidator('validate');
+        });
     });
+
+
+
+<%--            .on('success.form.bv',function (e) {--%>
+<%--                e.preventDefault();--%>
+<%--                var $form = $(e.target);--%>
+<%--                var bv = $form.data('bootstrapValidator').validateField('name');--%>
+
+
+<%--                $post($form.attr('action',$form.serialize(),function (e) {--%>
+<%--                    $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);--%>
+<%--                }))--%>
+<%--            })--%>
+
+<%--    });--%>
 </script>
 </body>
 </html>
