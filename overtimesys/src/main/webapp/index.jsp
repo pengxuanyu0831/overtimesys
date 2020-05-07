@@ -16,26 +16,17 @@
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
 
-    <!--jQuery -->
-    <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-
     <!--bootstrap & bootstrapValidator  -->
     <link rel="stylesheet" href = "css/bootstrap.css"/>
     <link rel="stylesheet" href = "css/bootstrapValidator.min.css">
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
-    <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
-    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
-    <!-- 自定义的校验规则-->
-    <script type ="text/javascript" src = "js/registered.js"></script>
-
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
 
 </head>
+
 <body>
-
-
 <div class="count-particles">
     <span class="js-count-particles">--</span> particles
 </div>
@@ -58,6 +49,10 @@
                                     <input type = "text" name = "name" placeholder="请输入用户名"
                                     data-bv-notempty
                                     data-bv-notempty-message = "姓名不能为空"
+                                    data-bv-stringLength = "true"
+                                           data-bv-stringLength-min = 4
+                                           data-bv-stringLength-max = 16
+                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间"
                                     >
                                 </div>
                             </div>
@@ -72,7 +67,9 @@
                             <div class = "form-group">
                                 <label class="col-lg-3 control-label">邮箱:</label>
                                 <div class="col-lg-4">
-                                    <input type = "text" name = "email" placeholder="请输入邮箱地址">
+                                    <input type = "text" name = "email" placeholder="请输入邮箱地址"
+                                    data-bv-emailAddress = "true"
+                                    data-bv-emailAddress-message = "请输入正确格式的邮箱地址">
                                 </div>
                             </div>
 
@@ -106,6 +103,14 @@
             <script src="js/particles.min.js"></script>
             <script src ="js/app.js"></script>
             <script src="js/stats.js"></script>
+            <!--jQuery -->
+            <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
+            <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
+            <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
+            <!-- 自定义的校验规则-->
+            <!-- 引入的文件无效，不知道为啥，调用代码可能写错了。不影响运行，放着先-->
+            <script type ="text/javascript" src = "js/registered.js"></script>
             <script>
                 var count_particles, stats, update;
                 stats = new Stats;
@@ -133,6 +138,7 @@
 <script>
     $(function(){
         // 校验规则
+        //这一串校验规则也无效，只有之间写在form里的内容是有效的，原因暂时不清楚，先放在这
         $('RegisterForm').bootstrapValidator({
             message:"不能为空",
             feedbackIcon: {
@@ -163,6 +169,7 @@
                 }
             }
         });
+        // 校验规则的调用。只有写在表单里的规则是起了作用的
         // 校验的是button，所以要写上button的id
         $('#RegisteredBtn').click(function() {
             $('#RegisterForm').bootstrapValidator('validate');

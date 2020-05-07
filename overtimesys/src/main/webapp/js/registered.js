@@ -1,6 +1,6 @@
     $(function(){
         // 校验规则
-        $('RegisterForm').bootstrapValidator({
+        $('login').bootstrapValidator({
             message:"不能为空",
             feedbackIcon: {
                 valid: 'glyphicon glyphicon-ok',
@@ -38,7 +38,7 @@
 
 
         $post($form.attr('action',$form.serialize(),function () {
-            $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+            $('login').bootstrapValidator('disableSubmitButtons',false);
         }))
     })
 
