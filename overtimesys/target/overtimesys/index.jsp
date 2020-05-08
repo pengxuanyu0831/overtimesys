@@ -16,26 +16,17 @@
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
 
-    <!--jQuery -->
-    <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
-
     <!--bootstrap & bootstrapValidator  -->
     <link rel="stylesheet" href = "css/bootstrap.css"/>
     <link rel="stylesheet" href = "css/bootstrapValidator.min.css">
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
-    <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
-    <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
-    <!-- 自定义的校验规则-->
-    <script type ="text/javascript" src = "js/registered.js"></script>
-
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1">
 
 </head>
+
 <body>
-
-
 <div class="count-particles">
     <span class="js-count-particles">--</span> particles
 </div>
@@ -58,6 +49,10 @@
                                     <input type = "text" name = "name" placeholder="请输入用户名"
                                     data-bv-notempty
                                     data-bv-notempty-message = "姓名不能为空"
+                                    data-bv-stringLength = "true"
+                                           data-bv-stringLength-min = 4
+                                           data-bv-stringLength-max = 16
+                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间"
                                     >
                                 </div>
                             </div>
@@ -106,6 +101,13 @@
             <script src="js/particles.min.js"></script>
             <script src ="js/app.js"></script>
             <script src="js/stats.js"></script>
+            <!--jQuery -->
+            <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
+            <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
+            <script type ="text/javascript" src ="js/bootstrapValidator.js"></script>
+            <!-- 自定义的校验规则-->
+            <script type ="text/javascript" src = "js/registered.js"></script>
             <script>
                 var count_particles, stats, update;
                 stats = new Stats;

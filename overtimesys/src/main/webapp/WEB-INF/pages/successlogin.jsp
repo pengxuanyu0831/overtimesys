@@ -8,9 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>首页</title>
+
+    <!-- particles 背景-->
+    <link rel ="stylesheet" media="screen" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <h2>登录成功！</h2>
+
+
+<script src="${pageContext.request.contextPath}/js/particles.min.js"></script>
+<script src ="${pageContext.request.contextPath}/js/app.js"></script>
+<script src="${pageContext.request.contextPath}/js/stats.js"></script>
+
 </body>
 </html>

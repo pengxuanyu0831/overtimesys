@@ -38,7 +38,6 @@
                     <div class = "page-header">
                         <h2>Sign up</h2>
                     </div>
-
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
@@ -52,8 +51,7 @@
                                     data-bv-stringLength = "true"
                                            data-bv-stringLength-min = 4
                                            data-bv-stringLength-max = 16
-                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间"
-                                    >
+                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间">
                                 </div>
                             </div>
 
@@ -138,7 +136,7 @@
 <script>
     $(function(){
         // 校验规则
-        //这一串校验规则也无效，只有之间写在form里的内容是有效的，原因暂时不清楚，先放在这
+        //这一串校验规则也无效，只有之间写在form里的规则是生效的，原因暂时不清楚，先放在这
         $('RegisterForm').bootstrapValidator({
             message:"不能为空",
             feedbackIcon: {
