@@ -22,7 +22,7 @@
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
-    <meta name = "viewport" content="width=device-width,inital-scale=1">
+    <meta name = "viewport" content="width=device-width,inital-scale=1.0">
 
 </head>
 
@@ -31,8 +31,8 @@
     <span class="js-count-particles">--</span> particles
 </div>
 <div id = "particles-js">
-    <div class="container" style="margin-top: 50px;">
-        <div class="row">
+    <div class="container" style="margin-top: 100px;">
+        <div class="center">
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class = "page-header">
@@ -128,8 +128,6 @@
                 };
                 requestAnimationFrame(update);
             </script>
-
-
         </div>
     </div>
 </div>
