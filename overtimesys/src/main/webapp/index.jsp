@@ -36,7 +36,7 @@
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class = "page-header">
-                        <h2>Sign up</h2>
+                        <h2>Sign up&Sign in</h2>
                     </div>
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>

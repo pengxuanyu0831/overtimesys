@@ -18,61 +18,51 @@
 <div id = "particles-js"></div>
 <nav>
     <div>
-        <a href="tool.html">
+        <a href="blog.html">
             <div>
-                <h1>TOOL</h1>
+                <h1>学习笔记</h1>
                 <span></span>
             </div>
             <div>
-                <h1>TOOL</h1>
-                <span></span>
-            </div>
-        </a>
-    </div>
-    <div>
-        <a href="work.html">
-            <div>
-                <h1>WORK</h1>
-                <span></span>
-            </div>
-            <div>
-                <h1>WORK</h1>
+                <h1>学习笔记</h1>
                 <span></span>
             </div>
         </a>
     </div>
     <div>
-        <a href="360.html">
+        <a href="Snippets.html">
             <div>
-                <h1>VR/360</h1>
+                <h1>Code Snippets</h1>
                 <span></span>
             </div>
             <div>
-                <h1>VR/360</h1>
+                <h1>Code Snippets</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+
+
+    <div>
+        <a href="Folder.html">
+            <div>
+                <h1>收藏夹</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>收藏夹</h1>
                 <span></span>
             </div>
         </a>
     </div>
     <div>
-        <a href="directors.html">
+        <a href="schedule.html">
             <div>
-                <h1>DIRECTORS</h1>
+                <h1>日历</h1>
                 <span></span>
             </div>
             <div>
-                <h1>DIRECTORS</h1>
-                <span></span>
-            </div>
-        </a>
-    </div>
-    <div>
-        <a href="awards.html">
-            <div>
-                <h1>AWARDS</h1>
-                <span></span>
-            </div>
-            <div>
-                <h1>AWARDS</h1>
+                <h1>日历</h1>
                 <span></span>
             </div>
         </a>
@@ -80,28 +70,44 @@
     <div>
         <a href="about.html">
             <div>
-                <h1>ABOUT</h1>
+                <h1>null</h1>
                 <span></span>
             </div>
             <div>
-                <h1>ABOUT</h1>
+                <h1>null</h1>
                 <span></span>
             </div>
         </a>
     </div>
     <div>
-        <a href="contact.html">
+        <a href="null.html">
             <div>
-                <h1>CONTACT</h1>
+                <h1>null</h1>
                 <span></span>
             </div>
             <div>
-                <h1>CONTACT</h1>
+                <h1>null</h1>
+                <span></span>
+            </div>
+        </a>
+    </div>
+
+    <div>
+        <a href="null.html">
+            <div>
+                <h1>null</h1>
+                <span></span>
+            </div>
+            <div>
+                <h1>null</h1>
                 <span></span>
             </div>
         </a>
     </div>
 </nav>
+
+<script type ="text/javascript" src = "${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+
 <script src ="${pageContext.request.contextPath}/js/particles.min.js"></script>
 <script src ="${pageContext.request.contextPath}/js/app.js"></script>
 <script src ="${pageContext.request.contextPath}/js/stats.js"></script>
@@ -124,6 +130,7 @@
     };
     requestAnimationFrame(update);
 </script>
+
 <script>
     $("nav>div").css("left", function (i) {
             return i * 220;
