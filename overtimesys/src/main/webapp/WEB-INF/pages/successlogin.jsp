@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>主页</title>
+    <title>首页</title>
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="${pageContext.request.contextPath}/css/style.css">
     <link rel ="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
