@@ -26,6 +26,18 @@
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources  location="/fonts" mapping="/fonts/**"/>
 
+    <mvc:annotation-driven validator="validator" conversion-service="conversionService"/>
+
+    <bean id ="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value = "org.hibernate.validator.HibernateValidator"/>
+        <property name="validationMessageSource" ref = "validatemessageSource"/>
+    </bean>
+    <bean id ="conversion-version" class = "org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+    <bean id = "validatemessageSource" class ="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name = "basename" value ="classpath:validatemessage"/>
+        <property name = "fileEncodings" value ="UTF-8"/>
+        <property name = "cacheSecond" value ="120"/>
+    </bean>
     <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">

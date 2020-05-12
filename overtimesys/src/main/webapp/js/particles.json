@@ -46,6 +46,7 @@
       }
     },
     "line_linked": {
+      "//": "特效连接线的参数",
       "enable": true,
       "distance": 150,
       "color": "#000000",
