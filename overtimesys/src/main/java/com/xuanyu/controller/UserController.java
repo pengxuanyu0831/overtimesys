@@ -50,7 +50,7 @@ public class UserController {
     @RequestMapping("/insert")
     public String insert(@Validated User user , BindingResult bindingResult) throws Exception {
         System.out.println("注册");
-
+        //校验失败跳转到登录也页
         List<ObjectError>allErrors = bindingResult.getAllErrors();
         if (allErrors != null && allErrors.size()>0) {
             return "index.jsp";
