@@ -3,13 +3,18 @@ package com.xuanyu.controller;
 import com.xuanyu.dao.UserMapper;
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import java.util.List;
 import java.util.Scanner;
@@ -39,11 +44,17 @@ public class UserController {
     /**
      * 用户注册
      * @param user
-     * @return
+     * @return 注册成功跳到首页
+     * 先校验是否存在
      */
     @RequestMapping("/insert")
-    public String insert(User user) {
+    public String insert(@Validated User user , BindingResult bindingResult) throws Exception {
         System.out.println("注册");
+
+        List<ObjectError>allErrors = bindingResult.getAllErrors();
+        if (allErrors != null && allErrors.size()>0) {
+            return "index.jsp";
+        }
         // 调用注入的 usersService 调用 insertUsers 方法
         userService.insetrUser(user);
         return "success";
