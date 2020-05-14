@@ -50,20 +50,21 @@ public class UserController {
     @RequestMapping("/insert")
     public String insert(@Validated User user , BindingResult bindingResult) throws Exception {
         System.out.println("注册");
-        //校验失败跳转到登录也页
+        //校验失败跳转到登录页
         List<ObjectError>allErrors = bindingResult.getAllErrors();
         if (allErrors != null && allErrors.size()>0) {
-            return "index.jsp";
+            return "falselogin";
         }
         // 调用注入的 usersService 调用 insertUsers 方法
         userService.insetrUser(user);
-        return "success";
+        // redirect  重定向到index.jsp
+        return "redirect:/index";
     }
 
     /**
      * 用户登录
      * @param user
-     * @return
+     * @return 登录成功跳转到successlogin页面 
      */
     @RequestMapping("/login")
     public String login(User user) {
