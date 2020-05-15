@@ -48,23 +48,28 @@ public class UserController {
      * 先校验是否存在
      */
     @RequestMapping("/insert")
-    public String insert(@Validated User user , BindingResult bindingResult) throws Exception {
+    @Validated
+    public String insert(@Validated User user , BindingResult bindingResultUser,@Validated Email email,BindingResult bindingResultEmail) throws Exception {
         System.out.println("注册");
         //校验失败跳转到登录页
-        List<ObjectError>allErrors = bindingResult.getAllErrors();
-        if (allErrors != null && allErrors.size()>0) {
-            return "falselogin";
+        List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
+        if (allErrorsUser != null && allErrorsUser.size()>0) {
+            return "redirect:/index";
         }
+        List<ObjectError>allErrorsEmail = bindingResultEmail.getAllErrors();
+        if(allErrorsEmail != null  ){
+            return "redirect:/index";
+        };
         // 调用注入的 usersService 调用 insertUsers 方法
         userService.insetrUser(user);
+        return "index";
         // redirect  重定向到index.jsp
-        return "redirect:/index";
-    }
+    };
 
     /**
      * 用户登录
      * @param user
-     * @return 登录成功跳转到successlogin页面 
+     * @return 登录成功跳转到successlogin页面
      */
     @RequestMapping("/login")
     public String login(User user) {
