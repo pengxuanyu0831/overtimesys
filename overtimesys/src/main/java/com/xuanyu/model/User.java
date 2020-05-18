@@ -16,6 +16,7 @@ public class User {
     @Email(message = "{email.address.not.correct}")
     @NotEmpty(message = "{email.not.empty}")
     private String email;
+    @NotEmpty(message = "{password.not.empty}")
     private String password;
 
     /*public Integer getId(Scanner sc) {
