@@ -1,5 +1,8 @@
 package com.xuanyu.model;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import java.util.Scanner;
 
 /**
@@ -8,7 +11,10 @@ import java.util.Scanner;
  */
 public class User {
     private Integer id;
+    @NotEmpty(message = "{name.not.empty}")
     private String name;
+    @Email(message = "{email.address.not.correct}")
+    @NotEmpty(message = "{email.not.empty}")
     private String email;
     private String password;
 
@@ -16,6 +22,9 @@ public class User {
         return id;
     }
      */
+
+
+
 
     public Integer getId(){ return  id; }
 
@@ -32,6 +41,7 @@ public class User {
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
+
 
     @Override
     public String toString(){

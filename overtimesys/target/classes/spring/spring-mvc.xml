@@ -34,7 +34,7 @@
     </bean>
     <bean id ="conversion-version" class = "org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
     <bean id = "validatemessageSource" class ="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name = "basename" value ="classpath:validatemessage"/>
+        <property name = "basename" value ="classpath:/resources/validatemessage"/>
         <property name = "fileEncodings" value ="UTF-8"/>
         <property name = "cacheSecond" value ="120"/>
     </bean>

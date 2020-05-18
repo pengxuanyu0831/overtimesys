@@ -49,7 +49,8 @@ public class UserController {
      */
     @RequestMapping("/insert")
     @Validated
-    public String insert(@Validated User user , BindingResult bindingResultUser,@Validated Email email,BindingResult bindingResultEmail) throws Exception {
+    public String insert(@Validated User user , BindingResult bindingResultUser,
+                         @Validated Email email,BindingResult bindingResultEmail) throws Exception {
         System.out.println("注册");
         //校验失败跳转到登录页
         List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
