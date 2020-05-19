@@ -50,14 +50,14 @@ public class UserController {
     @RequestMapping("/insert")
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
-    public String insert(@Validated User user , BindingResult bindingResultUser,
-                         @Validated Email email,BindingResult bindingResultEmail) throws Exception {
+    // 对象校验
+    public String insert(@Validated User user , BindingResult bindingResultUser) throws Exception {
         System.out.println("注册ing...");
         if (bindingResultUser.hasErrors()){
-            return "index";
+            return "User";
         }
-        if(bindingResultEmail.hasErrors()){
-            return "index";
+        else{
+            return "successlogin";
         }
 //        //校验失败跳转到登录页
 //        List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
@@ -69,8 +69,11 @@ public class UserController {
 //            return "redirect:/index";
 //        };
         // 调用注入的 usersService 调用 insertUsers 方法
-        userService.insetrUser(user);
-        return "index";
+
+
+//
+//        userService.insetrUser(user);
+//        return "index";
         // redirect  重定向到index.jsp
     };
 
