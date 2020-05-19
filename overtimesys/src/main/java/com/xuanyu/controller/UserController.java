@@ -48,19 +48,26 @@ public class UserController {
      * 先校验是否存在
      */
     @RequestMapping("/insert")
+    //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     public String insert(@Validated User user , BindingResult bindingResultUser,
                          @Validated Email email,BindingResult bindingResultEmail) throws Exception {
-        System.out.println("注册");
-        //校验失败跳转到登录页
-        List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
-        if (allErrorsUser != null && allErrorsUser.size()>0) {
-            return "redirect:/index";
+        System.out.println("注册ing...");
+        if (bindingResultUser.hasErrors()){
+            return "index";
         }
-        List<ObjectError>allErrorsEmail = bindingResultEmail.getAllErrors();
-        if(allErrorsEmail != null  ){
-            return "redirect:/index";
-        };
+        if(bindingResultEmail.hasErrors()){
+            return "index";
+        }
+//        //校验失败跳转到登录页
+//        List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
+//        if (allErrorsUser != null && allErrorsUser.size()>0) {
+//            return "redirect:/index";
+//        }
+//        List<ObjectError>allErrorsEmail = bindingResultEmail.getAllErrors();
+//        if(allErrorsEmail != null  ){
+//            return "redirect:/index";
+//        };
         // 调用注入的 usersService 调用 insertUsers 方法
         userService.insetrUser(user);
         return "index";
