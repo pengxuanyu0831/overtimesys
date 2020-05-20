@@ -10,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
@@ -47,33 +44,31 @@ public class UserController {
      * @return 注册成功跳到首页
      * 先校验是否存在
      */
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method = {RequestMethod.POST})
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insert(@Validated User user , BindingResult bindingResultUser) throws Exception {
+    public User insertUsert(@RequestBody @Validated User user ,
+                         BindingResult bindingResultUser){
         System.out.println("注册ing...");
-        if (bindingResultUser.hasErrors()){
-            return "User";
-        }
-        else{
-            return "successlogin";
-        }
-//        //校验失败跳转到登录页
-//        List<ObjectError>allErrorsUser = bindingResultUser.getAllErrors();
-//        if (allErrorsUser != null && allErrorsUser.size()>0) {
-//            return "redirect:/index";
+        User userhvtest = userService.insetrUser(user);
+        return userhvtest;
+
+//        if (bindingResultUser.hasErrors()){
+//            return "index";
 //        }
-//        List<ObjectError>allErrorsEmail = bindingResultEmail.getAllErrors();
-//        if(allErrorsEmail != null  ){
-//            return "redirect:/index";
-//        };
-        // 调用注入的 usersService 调用 insertUsers 方法
+//        else{
+//            userService.insetrUser(user);
+//            return "successlogin";
+//        }
+
+//    public HVtest insert(@Validated User user ,BindingResult bindingResult){
+//        HVtest hvtset = userService.insetrUser(user);
+//        return hvtest;
+
 
 
 //
-//        userService.insetrUser(user);
-//        return "index";
         // redirect  重定向到index.jsp
     };
 

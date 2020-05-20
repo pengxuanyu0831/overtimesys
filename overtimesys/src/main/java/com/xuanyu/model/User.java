@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @version UpToBlog V0.1
  */
 public class User {
+    // id 非空
     private Integer id;
     @NotEmpty(message = "{name.not.empty}")
     private String name;
@@ -18,14 +19,6 @@ public class User {
     private String email;
     @NotEmpty(message = "{password.not.empty}")
     private String password;
-
-    /*public Integer getId(Scanner sc) {
-        return id;
-    }
-     */
-
-
-    public User() {   }
 
     public Integer getId(){ return  id; }
 

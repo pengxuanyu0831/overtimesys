@@ -5,6 +5,6 @@ import java.util.List;
 public interface UserService {
     // 查询全部用户
     public List<User>findUsers();
-    public void insetrUser(User user);
+    public User insetrUser(User user);
     public boolean login(User user);
 }
