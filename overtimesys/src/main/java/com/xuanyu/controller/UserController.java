@@ -1,20 +1,16 @@
 package com.xuanyu.controller;
 
-import com.xuanyu.dao.UserMapper;
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * @author xuanyu
@@ -41,36 +37,25 @@ public class UserController {
     /**
      * 用户注册
      * @param user
-     * @return 注册成功跳到首页
-     * 先校验是否存在
      */
-    @RequestMapping(value = "/insert",method = {RequestMethod.POST})
+    @RequestMapping(value = "${pageContext.request.contextPath}/users/insert",method = RequestMethod.POST)
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public User insertUsert(@RequestBody @Validated User user ,
-                         BindingResult bindingResultUser){
+    public String insertUsert(@RequestBody @Validated User user ,
+                            BindingResult bindingResultUser) {
         System.out.println("注册ing...");
-        User userhvtest = userService.insetrUser(user);
-        return userhvtest;
+//        User userhvtest = userService.insetrUser(user);
+//        return userhvtest;
 
-//        if (bindingResultUser.hasErrors()){
-//            return "index";
-//        }
-//        else{
-//            userService.insetrUser(user);
-//            return "successlogin";
-//        }
-
-//    public HVtest insert(@Validated User user ,BindingResult bindingResult){
-//        HVtest hvtset = userService.insetrUser(user);
-//        return hvtest;
-
-
-
-//
-        // redirect  重定向到index.jsp
+        if (bindingResultUser.hasErrors()) {
+            return "index";
+        }
+        userService.insetrUser(user);
+        return "successlogin";
     };
+
+
 
     /**
      * 用户登录

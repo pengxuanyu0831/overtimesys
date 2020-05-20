@@ -30,6 +30,7 @@
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="validationMessageSource" ref="validatemessage"/>
     </bean>
 
     <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
