@@ -8,15 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-
 import java.util.List;
 
 /**
  * @author xuanyu
  */
-
-
 
 
 
@@ -42,7 +38,7 @@ public class UserController {
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insertUsert(@RequestBody @Validated User user ,
+    public String insertUsert(@RequestBody @Validated UserService userService ,
                             BindingResult bindingResultUser) {
         System.out.println("注册ing...");
 //        User userhvtest = userService.insetrUser(user);
@@ -51,7 +47,7 @@ public class UserController {
         if (bindingResultUser.hasErrors()) {
             return "index";
         }
-        userService.insetrUser(user);
+//        userService.insetrUser(userService);
         return "successlogin";
     };
 

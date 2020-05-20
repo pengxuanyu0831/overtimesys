@@ -29,8 +29,18 @@
     <mvc:annotation-driven validator="validator"/>
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
         <property name="validationMessageSource" ref="validatemessage"/>
+    </bean>
+
+    <bean id="validatemessage" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>validatemessage.properties</value>
+            </list>
+        </property>
+        <property name="fileEncodings" value="utf8"></property>
+        <property name="cacheSeconds" value="120"></property>
     </bean>
 
     <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
