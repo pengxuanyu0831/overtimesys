@@ -1,6 +1,7 @@
 package com.xuanyu.dao;
 
 import com.xuanyu.model.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -36,6 +37,8 @@ public interface UserMapper{
     // 用户登录
     @Select("select * from user where name=#{name} and password=#{password}")
     public User login(User user);
+
+    // @Delete("")
 
     // void findUser();
 }

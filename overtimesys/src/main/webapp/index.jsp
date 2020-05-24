@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: pengxy
@@ -41,8 +43,11 @@
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
+                        <%--@elvariable id="infoModel" type="com"--%>
+                        <form:form modelAttribute="infoModel" method="post"></form:form>
                         <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insert">
                             <div class = "form-group">
+                                <from:errors path="*"></from:errors>
                                 <label class="col-lg-3 control-label">用户名:</label>
                                 <div class="col-lg-4 ">
                                     <input type = "text" name = "name" placeholder="请输入用户名"
@@ -52,6 +57,7 @@
                                            data-bv-stringLength-min = 4
                                            data-bv-stringLength-max = 16
                                            data-bv-stringLength-message = "用户名长度限制在4-16位之间">
+                                    <form:errors path="name"></form:errors>
                                 </div>
                             </div>
 
@@ -59,6 +65,7 @@
                                 <label class="col-lg-3 control-label">密码:</label>
                                 <div class="col-lg-4">
                                     <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
+                                    <form:errors path="pasword"></form:errors>
                                 </div>
                             </div>
 
@@ -68,6 +75,7 @@
                                     <input type = "text" name = "email" placeholder="请输入邮箱地址"
                                     data-bv-emailAddress = "true"
                                     data-bv-emailAddress-message = "请输入正确格式的邮箱地址">
+                                    <form:errors path="email"></form:errors>
                                 </div>
                             </div>
 

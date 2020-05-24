@@ -38,7 +38,7 @@ public class UserController {
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insertUsert(@RequestBody @Validated UserService userService ,
+    public String insertUsert(@RequestBody @Validated @ModelAttribute("infoModel") UserService userService ,
                             BindingResult bindingResultUser) {
         System.out.println("注册ing...");
 //        User userhvtest = userService.insetrUser(user);
