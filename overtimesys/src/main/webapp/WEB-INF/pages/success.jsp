@@ -12,5 +12,6 @@
 </head>
 <body>
 <h2>注册成功!</h2>
+<a href="${pageContext.request.contextPath}/index.jsp">返回登录页</a>
 </body>
 </html>
