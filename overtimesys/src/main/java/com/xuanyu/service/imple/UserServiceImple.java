@@ -35,4 +35,9 @@ public class UserServiceImple implements UserService {
             return true;
         }
     }
+
+    @Override
+    public User validatorEmailExist(String email) {
+        return null;
+    }
 }

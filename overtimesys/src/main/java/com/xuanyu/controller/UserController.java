@@ -4,6 +4,7 @@ import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
 import com.xuanyu.service.ValidatorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,11 +23,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private ValidatorService validatorService;
 
+    @Autowired
+    protected UserService userService;
 
     @RequestMapping("/findUser")
     public String findUsers(Model model){
@@ -61,9 +60,14 @@ public class UserController {
     @param email
 
      */
-    @RequestMapping("/validatorEmail")
+    @RequestMapping("/validatorEmail.do")
     public void validatorEmail(String email , PrintWriter writer)throws Exception{
-        User user = validatorService.validatorEmailExist(email);
+        User user = userService.validatorEmailExist(email);
+        if(user != null && user.getId() != null){
+            writer.write("hasEmail");
+        }else {
+            writer.write("noEmail");
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.xuanyu.service;
 import com.xuanyu.model.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -9,4 +10,6 @@ public interface UserService {
     public User insetrUser(User user);
 
     public boolean login(User user);
+
+    User validatorEmailExist(String email);
 }
