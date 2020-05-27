@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.PrintWriter;
 import java.util.List;
 
-import static com.xuanyu.service.ValidatorService.validatorEmailExist;
-
 /**
  * @author xuanyu
  */
@@ -26,6 +24,10 @@ import static com.xuanyu.service.ValidatorService.validatorEmailExist;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ValidatorService validatorService;
+
+
     @RequestMapping("/findUser")
     public String findUsers(Model model){
         System.out.println("表现层：查询用户");
@@ -61,7 +63,7 @@ public class UserController {
      */
     @RequestMapping("/validatorEmail")
     public void validatorEmail(String email , PrintWriter writer)throws Exception{
-        User user = ValidatorService.validatorEmailExist(email);
+        User user = validatorService.validatorEmailExist(email);
     }
 
     /**
