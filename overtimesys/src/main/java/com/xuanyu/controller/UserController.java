@@ -2,13 +2,18 @@ package com.xuanyu.controller;
 
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
+import com.xuanyu.service.ValidatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.PrintWriter;
 import java.util.List;
+
+import static com.xuanyu.service.ValidatorService.validatorEmailExist;
 
 /**
  * @author xuanyu
@@ -50,8 +55,14 @@ public class UserController {
 //        userService.insetrUser(userService);
         return "successlogin";
     };
+    /*
+    @param email
 
-
+     */
+    @RequestMapping("/validatorEmail")
+    public void validatorEmail(String email , PrintWriter writer)throws Exception{
+        User user = ValidatorService.validatorEmailExist(email);
+    }
 
     /**
      * 用户登录
