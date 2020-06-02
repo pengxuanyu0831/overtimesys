@@ -26,8 +26,7 @@
     <script src = "js/sweetalert.js"></script>
     <link rel ="stylesheet" type = "text/css" href = "css/sweetalert.css">
 
-
-    <script src = "/js/registered.js"></script>
+    <script src = "${pageContext.request.contextPath}/js/registered.js"></script>
 </head>
 <body>
 <div id = "particles-js">
@@ -77,5 +76,67 @@
         </form>
     </div>
 </div>
+<script src="js/particles.min.js"></script>
+<script src ="js/app.js"></script>
+<script src="js/stats.js"></script>
+<!--jQuery -->
+<script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
+<script type ="text/javascript" src = "js/bootstrap.min.js"></script>
+<script type ="text/javascript" src = "js/bootstrapValidator.js"></script>
+
+<script>
+    $(function(){
+        // 校验规则
+        $('RegisterForm').bootstrapValidator({
+            message:"不能为空",
+            feedbackIcon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields:{
+                'name' :{
+                    message:'用户名无效',
+                    validators:{
+                        notEmpty:{
+                            message:'用户名不能为空'
+                        },
+                        stringLength:{
+                            min:4,
+                            max:16,
+                            message:'用户名长度在4 ~ 16个字符之间'
+                        }
+                    }
+                },
+                'email':{
+                    validators:{
+                        emailAddress:{
+                            message:'请输入有效的邮箱格式'
+                        }
+                    }
+                }
+            }
+        })
+
+            .on('success.form.bv',function (e) {
+                e.preventDefault();
+                var $form = $(e.target);
+                var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
+
+
+                $post($form.attr('action',$form.serialize(),function () {
+                    $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+                }))
+            })
+        // 校验规则的调用。只有写在表单里的规则是起了作用的
+        // 校验的是button，所以要写上button的id
+        $('#RegisteredBtn').click(function() {
+            $('#RegisterForm').bootstrapValidator('validate');
+        });
+
+    });
+</script>
+
 </body>
 </html>

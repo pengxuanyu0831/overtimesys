@@ -1,6 +1,6 @@
     $(function(){
         // 校验规则
-        $('login').bootstrapValidator({
+        $('RegisterForm').bootstrapValidator({
             message:"不能为空",
             feedbackIcon: {
                 valid: 'glyphicon glyphicon-ok',
@@ -38,7 +38,7 @@
 
 
         $post($form.attr('action',$form.serialize(),function () {
-            $('login').bootstrapValidator('disableSubmitButtons',false);
+            $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
         }))
     })
         // 校验规则的调用。只有写在表单里的规则是起了作用的
