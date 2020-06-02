@@ -97,14 +97,14 @@
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
                                 <label class ="col-lg-4 control-label">用户名:</label>
-                                <div class ="col-lg-5 col-md-5 col-xs-5 col-sm-5 ">
+                                <div class ="col-lg-5">
                                     <input type = "text" name = "name">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class ="col-lg-4 control-label">密码:</label>
-                                <div class ="col-lg-5 col-md-5 col-xs-5 col-sm-5 ">
+                                <div class ="col-lg-5 ">
                                     <input type ="password" name = "password">
                                 </div>
                             </div>

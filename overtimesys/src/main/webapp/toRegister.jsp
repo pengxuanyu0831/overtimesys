@@ -23,8 +23,8 @@
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <!-- sweetalert提示 -->
-    <script src = "js/sweetalert.js"></script>
-    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert.css">
+    <script src = "js/sweetalert2.min.js"></script>
+    <link rel ="stylesheet" type = "text/css" href = "./css/sweetalert2.min.css">
 
     <script src = "${pageContext.request.contextPath}/js/registered.js"></script>
 </head>
@@ -36,7 +36,7 @@
             <div class = "form-group">
                 <from:errors path="*"></from:errors>
                 <label class="col-lg-3 control-label">用户名:</label>
-                <div class="col-lg-4 ">
+                <div class="col-md-4 ">
                     <input type = "text" name = "name" placeholder="请输入用户名"
                            data-bv-notempty
                            data-bv-notempty-message = "姓名不能为空"
@@ -50,7 +50,7 @@
 
             <div class = "form-group">
                 <label class="col-lg-3 control-label">密码:</label>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
                     <form:errors path="pasword"></form:errors>
                 </div>
@@ -58,7 +58,7 @@
 
             <div class = "form-group">
                 <label class="col-lg-3 control-label">邮箱:</label>
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     <input type = "text" name = "email" placeholder="请输入邮箱地址"
                            data-bv-emailAddress = "true"
                            data-bv-emailAddress-message = "请输入正确格式的邮箱地址">

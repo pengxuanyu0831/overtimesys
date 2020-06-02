@@ -24,8 +24,8 @@
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <%-- sweetalert提示--%>
-    <script src = "js/sweetalert.js"></script>
-    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert.css">
+    <script src = "js/sweetalert2.min.js"></script>
+    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert2.min.css">
 
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1.0">
@@ -97,14 +97,14 @@
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
                                 <label class ="col-lg-4 control-label">用户名:</label>
-                                <div class ="col-lg-5 col-md-5 col-xs-5 col-sm-5 ">
+                                <div class ="col-lg-5">
                                     <input type = "text" name = "name">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class ="col-lg-4 control-label">密码:</label>
-                                <div class ="col-lg-5 col-md-5 col-xs-5 col-sm-5 ">
+                                <div class ="col-lg-5 ">
                                     <input type ="password" name = "password">
                                 </div>
                             </div>
