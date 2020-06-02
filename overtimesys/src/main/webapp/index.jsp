@@ -24,6 +24,7 @@
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <%-- sweetalert提示--%>
+    <script src = "js/sweetalert.js"></script>
     <link rel ="stylesheet" type = "text/css" href = "css/sweetalert.css">
 
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
@@ -121,7 +122,7 @@
             <!-- 引入的文件无效，不知道为啥，调用代码可能写错了。不影响运行，放着先-->
             <script type ="text/javascript" src = "js/registered.js"></script>
 
-            <script src = "js/sweetalert.js"></script>
+
             <script>
                 var count_particles, stats, update;
                 stats = new Stats;
