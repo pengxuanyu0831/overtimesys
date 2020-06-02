@@ -14,6 +14,9 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <!--jQuery -->
+    <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
 
@@ -30,10 +33,12 @@
 </head>
 <body>
 <div id = "particles-js">
-    <div class="container" style="position: absolute;left: 120px;">
+    <div class="container" style="margin-top: 100px;">
+        <div class = "center">
         <form:form modelAttribute="infoModel" method="post"></form:form>
         <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insertUser">
             <div class = "form-group">
+                <div class = row>
                 <from:errors path="*"></from:errors>
                 <label class="col-lg-3 control-label">用户名:</label>
                 <div class="col-md-4 ">
@@ -46,23 +51,30 @@
                            data-bv-stringLength-message = "用户名长度限制在4-16位之间">
                     <form:errors path="name"></form:errors>
                 </div>
+                </div>
             </div>
 
             <div class = "form-group">
+                <div class = row>
                 <label class="col-lg-3 control-label">密码:</label>
                 <div class="col-md-4">
                     <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
                     <form:errors path="pasword"></form:errors>
                 </div>
+                </div>
             </div>
 
             <div class = "form-group">
+                <div class = row>
                 <label class="col-lg-3 control-label">邮箱:</label>
                 <div class="col-md-4">
                     <input type = "text" name = "email" placeholder="请输入邮箱地址"
+                           data-bv-notempty
+                           data-bv-notempty-message = "邮箱不能为空"
                            data-bv-emailAddress = "true"
                            data-bv-emailAddress-message = "请输入正确格式的邮箱地址">
                     <form:errors path="email"></form:errors>
+                </div>
                 </div>
             </div>
 
@@ -74,13 +86,13 @@
                 <a href="${pageContext.request.contextPath}/index.jsp">去登录</a>
             </div>
         </form>
+        </div>
     </div>
 </div>
 <script src="js/particles.min.js"></script>
 <script src ="js/app.js"></script>
 <script src="js/stats.js"></script>
-<!--jQuery -->
-<script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
+
 
 <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
 <script type ="text/javascript" src = "js/bootstrapValidator.js"></script>

@@ -24,8 +24,8 @@
     <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <%-- sweetalert提示--%>
-    <script src = "js/sweetalert.js"></script>
-    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert.css">
+    <script src = "js/sweetalert2.min.js"></script>
+    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert2.min.css">
 
     <meta http-equiv="X-UA-Compattible" content="IE = edge,chrome=1">
     <meta name = "viewport" content="width=device-width,inital-scale=1.0">
@@ -42,70 +42,34 @@
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class = "page-header">
-                        <h2>Sign in</h2>
+                        <h1>Sign in</h1>
                     </div>
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
 
-
                         <div>
-                            <a href = "${pageContext.request.contextPath}/toRegister.jsp">注 册</a>
+                            <a href = "${pageContext.request.contextPath}/toRegister.jsp">去注册</a>
                         </div>
-                        <%--@elvariable id="infoModel" type="com"--%>
-<%--                        <form:form modelAttribute="infoModel" method="post"></form:form>--%>
-<%--                        <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insert">--%>
-<%--                            <div class = "form-group">--%>
-<%--                                <from:errors path="*"></from:errors>--%>
-<%--                                <label class="col-lg-3 control-label">用户名:</label>--%>
-<%--                                <div class="col-lg-4 ">--%>
-<%--                                    <input type = "text" name = "name" placeholder="请输入用户名"--%>
-<%--                                    data-bv-notempty--%>
-<%--                                    data-bv-notempty-message = "姓名不能为空"--%>
-<%--                                    data-bv-stringLength = "true"--%>
-<%--                                           data-bv-stringLength-min = 4--%>
-<%--                                           data-bv-stringLength-max = 16--%>
-<%--                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间">--%>
-<%--                                    <form:errors path="name"></form:errors>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
 
-<%--                            <div class = "form-group">--%>
-<%--                                <label class="col-lg-3 control-label">密码:</label>--%>
-<%--                                <div class="col-lg-4">--%>
-<%--                                    <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">--%>
-<%--                                    <form:errors path="pasword"></form:errors>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-
-<%--                            <div class = "form-group">--%>
-<%--                                <label class="col-lg-3 control-label">邮箱:</label>--%>
-<%--                                <div class="col-lg-4">--%>
-<%--                                    <input type = "text" name = "email" placeholder="请输入邮箱地址"--%>
-<%--                                    data-bv-emailAddress = "true"--%>
-<%--                                    data-bv-emailAddress-message = "请输入正确格式的邮箱地址">--%>
-<%--                                    <form:errors path="email"></form:errors>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-
-<%--                            <div class = "col-lg-offset-2">--%>
-<%--                                <button type = "submit" class = " btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>--%>
-<%--                            </div>--%>
-<%--                        </form>--%>
                         <hr>
 
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
+                                <div class =row >
                                 <label class ="col-lg-4 control-label">用户名:</label>
                                 <div class ="col-lg-5">
                                     <input type = "text" name = "name">
                                 </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
+                                <div class = row>
                                 <label class ="col-lg-4 control-label">密码:</label>
                                 <div class ="col-lg-5 ">
                                     <input type ="password" name = "password">
+                                </div>
                                 </div>
                             </div>
                             <div class = "col-lg-4 col-lg=offset-2">
