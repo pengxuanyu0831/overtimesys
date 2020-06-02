@@ -20,9 +20,9 @@ public class UserServiceImple implements UserService {
     }
 
     @Override
-    public User insetrUser(User user){
+    public User insertUser(User user){
         System.out.println("业务层：用户注册");
-        userMapper.insetrUser(user);
+        userMapper.insertUser(user);
         return user;
     }
 

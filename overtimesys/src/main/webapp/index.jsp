@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>hello moto</title>
+    <title>Hello Moto</title>
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -42,51 +42,56 @@
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class = "page-header">
-                        <h2>Sign up&Sign in</h2>
+                        <h2>Sign in</h2>
                     </div>
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
                         <hr>
+
+
+                        <div>
+                            <a href = "${pageContext.request.contextPath}/toRegister.jsp">注 册</a>
+                        </div>
                         <%--@elvariable id="infoModel" type="com"--%>
-                        <form:form modelAttribute="infoModel" method="post"></form:form>
-                        <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insert">
-                            <div class = "form-group">
-                                <from:errors path="*"></from:errors>
-                                <label class="col-lg-3 control-label">用户名:</label>
-                                <div class="col-lg-4 ">
-                                    <input type = "text" name = "name" placeholder="请输入用户名"
-                                    data-bv-notempty
-                                    data-bv-notempty-message = "姓名不能为空"
-                                    data-bv-stringLength = "true"
-                                           data-bv-stringLength-min = 4
-                                           data-bv-stringLength-max = 16
-                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间">
-                                    <form:errors path="name"></form:errors>
-                                </div>
-                            </div>
+<%--                        <form:form modelAttribute="infoModel" method="post"></form:form>--%>
+<%--                        <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insert">--%>
+<%--                            <div class = "form-group">--%>
+<%--                                <from:errors path="*"></from:errors>--%>
+<%--                                <label class="col-lg-3 control-label">用户名:</label>--%>
+<%--                                <div class="col-lg-4 ">--%>
+<%--                                    <input type = "text" name = "name" placeholder="请输入用户名"--%>
+<%--                                    data-bv-notempty--%>
+<%--                                    data-bv-notempty-message = "姓名不能为空"--%>
+<%--                                    data-bv-stringLength = "true"--%>
+<%--                                           data-bv-stringLength-min = 4--%>
+<%--                                           data-bv-stringLength-max = 16--%>
+<%--                                           data-bv-stringLength-message = "用户名长度限制在4-16位之间">--%>
+<%--                                    <form:errors path="name"></form:errors>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class = "form-group">
-                                <label class="col-lg-3 control-label">密码:</label>
-                                <div class="col-lg-4">
-                                    <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
-                                    <form:errors path="pasword"></form:errors>
-                                </div>
-                            </div>
+<%--                            <div class = "form-group">--%>
+<%--                                <label class="col-lg-3 control-label">密码:</label>--%>
+<%--                                <div class="col-lg-4">--%>
+<%--                                    <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">--%>
+<%--                                    <form:errors path="pasword"></form:errors>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class = "form-group">
-                                <label class="col-lg-3 control-label">邮箱:</label>
-                                <div class="col-lg-4">
-                                    <input type = "text" name = "email" placeholder="请输入邮箱地址"
-                                    data-bv-emailAddress = "true"
-                                    data-bv-emailAddress-message = "请输入正确格式的邮箱地址">
-                                    <form:errors path="email"></form:errors>
-                                </div>
-                            </div>
+<%--                            <div class = "form-group">--%>
+<%--                                <label class="col-lg-3 control-label">邮箱:</label>--%>
+<%--                                <div class="col-lg-4">--%>
+<%--                                    <input type = "text" name = "email" placeholder="请输入邮箱地址"--%>
+<%--                                    data-bv-emailAddress = "true"--%>
+<%--                                    data-bv-emailAddress-message = "请输入正确格式的邮箱地址">--%>
+<%--                                    <form:errors path="email"></form:errors>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
-                            <div class = "col-lg-offset-2">
-                                <button type = "submit" class = " btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
-                            </div>
-                        </form>
+<%--                            <div class = "col-lg-offset-2">--%>
+<%--                                <button type = "submit" class = " btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>--%>
+<%--                            </div>--%>
+<%--                        </form>--%>
                         <hr>
 
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
@@ -145,46 +150,42 @@
         </div>
     </div>
 </div>
-<script>
-    $(function(){
-        // 校验规则
-        //这一串校验规则也无效，只有之间写在form里的规则是生效的，原因暂时不清楚，先放在这
-        $('RegisterForm').bootstrapValidator({
-            message:"不能为空",
-            feedbackIcon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields:{
-                'name' :{
-                    message:'用户名无效',
-                    validators:{
-                        notEmpty:{
-                            message:'用户名不能为空'
-                        },
-                        stringLength:{
-                            min:4,
-                            max:16,
-                            message:'用户名长度在4 ~ 16个字符之间'
-                        }
-                    }
-                },
-                'email':{
-                    validators:{
-                        emailAddress:{
-                            message:'请输入有效的邮箱格式'
-                        }
-                    }
-                }
-            }
-        });
-        // 校验规则的调用。只有写在表单里的规则是起了作用的
-        // 校验的是button，所以要写上button的id
-        $('#RegisteredBtn').click(function() {
-            $('#RegisterForm').bootstrapValidator('validate');
-        });
-    });
+<%--<script>--%>
+<%--    $(function(){--%>
+<%--        // 校验规则--%>
+<%--        //这一串校验规则也无效，只有之间写在form里的规则是生效的，原因暂时不清楚，先放在这--%>
+<%--        $('RegisterForm').bootstrapValidator({--%>
+<%--            message:"不能为空",--%>
+<%--            feedbackIcon: {--%>
+<%--                valid: 'glyphicon glyphicon-ok',--%>
+<%--                invalid: 'glyphicon glyphicon-remove',--%>
+<%--                validating: 'glyphicon glyphicon-refresh'--%>
+<%--            },--%>
+<%--            fields:{--%>
+<%--                'name' :{--%>
+<%--                    message:'用户名无效',--%>
+<%--                    validators:{--%>
+<%--                        notEmpty:{--%>
+<%--                            message:'用户名不能为空'--%>
+<%--                        },--%>
+<%--                        stringLength:{--%>
+<%--                            min:4,--%>
+<%--                            max:16,--%>
+<%--                            message:'用户名长度在4 ~ 16个字符之间'--%>
+<%--                        }--%>
+<%--                    }--%>
+<%--                },--%>
+<%--                'email':{--%>
+<%--                    validators:{--%>
+<%--                        emailAddress:{--%>
+<%--                            message:'请输入有效的邮箱格式'--%>
+<%--                        }--%>
+<%--                    }--%>
+<%--                }--%>
+<%--            }--%>
+<%--        });--%>
+
+<%--    });--%>
 
 
 
@@ -200,6 +201,5 @@
 <%--            })--%>
 
 <%--    });--%>
-</script>
 </body>
 </html>

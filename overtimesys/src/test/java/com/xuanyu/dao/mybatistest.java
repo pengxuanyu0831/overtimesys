@@ -55,7 +55,7 @@ public class mybatistest {
         UserMapper dao = session.getMapper(UserMapper.class);
 
         // 保存
-        dao.insetrUser(user);
+        dao.insertUser(user);
 
         // 提交事务
         session.commit();

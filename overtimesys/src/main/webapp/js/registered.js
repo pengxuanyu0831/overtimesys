@@ -41,5 +41,10 @@
             $('login').bootstrapValidator('disableSubmitButtons',false);
         }))
     })
+        // 校验规则的调用。只有写在表单里的规则是起了作用的
+        // 校验的是button，所以要写上button的id
+        $('#RegisteredBtn').click(function() {
+            $('#RegisterForm').bootstrapValidator('validate');
+        });
 
     });

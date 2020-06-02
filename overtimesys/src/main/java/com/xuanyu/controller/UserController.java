@@ -3,6 +3,7 @@ package com.xuanyu.controller;
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
 import com.xuanyu.service.ValidatorService;
+import com.xuanyu.service.imple.UserServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    protected UserService userService;
+    protected UserServiceImple userService;
 
     @RequestMapping("/findUser")
     public String findUsers(Model model){
@@ -40,18 +41,18 @@ public class UserController {
      * 用户注册
      * @param user
      */
-    @RequestMapping(value = "${pageContext.request.contextPath}/users/insert",method = RequestMethod.POST)
+    @RequestMapping(value = "/insertUser")
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insertUsert(@RequestBody @Validated @ModelAttribute("infoModel") UserService userService ,
-                            BindingResult bindingResultUser) {
+    public String insertUser(@RequestBody @Validated @ModelAttribute("infoModel") User user ,BindingResult bindingResultUser) {
         System.out.println("注册ing...");
+        userService.insertUser(user);
 //        User userhvtest = userService.insetrUser(user);
-//        return userhvtest;
+
 
         if (bindingResultUser.hasErrors()) {
-            return "index";
+            return "successlogin";
         }
 //        userService.insetrUser(userService);
         return "successlogin";

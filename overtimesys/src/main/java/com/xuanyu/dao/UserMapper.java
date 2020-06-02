@@ -33,7 +33,7 @@ public interface UserMapper{
     public List<User> findUsers();
     // 用户注册
     @Insert("INSERT INTO USER (name,password,email) VALUES(#{name},#{password},#{email})")
-    public void insetrUser(User user);
+    public void insertUser(User user);
     // 用户登录
     @Select("select * from user where name=#{name} and password=#{password}")
     public User login(User user);

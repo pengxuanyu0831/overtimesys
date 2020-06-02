@@ -7,7 +7,7 @@ public interface UserService {
     // 查询全部用户
     public List<User>findUsers();
 
-    public User insetrUser(User user);
+    public User insertUser(User user);
 
     public boolean login(User user);
 
