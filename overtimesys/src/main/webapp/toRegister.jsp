@@ -100,6 +100,7 @@
 <script>
     $(function(){
         // 校验规则
+        // 这一段校验规则是无效的，只有写在表单里的是起了作用的，不知为何？
         $('RegisterForm').bootstrapValidator({
             message:"不能为空",
             feedbackIcon: {

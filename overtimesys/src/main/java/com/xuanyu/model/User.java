@@ -3,6 +3,7 @@ package com.xuanyu.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.constraints.Size;
 import java.util.Scanner;
 
 /**
@@ -13,10 +14,13 @@ public class User {
     // id 非空
     private Integer id;
     @NotEmpty(message = "{name.not.empty}")
+    @Size(min=4,max=16,message = "{user.length.not.correct}")
     private String name;
+
     @Email(message = "{email.address.not.correct}")
     @NotEmpty(message = "{email.not.empty}")
     private String email;
+
     @NotEmpty(message = "{password.not.empty}")
     private String password;
 
