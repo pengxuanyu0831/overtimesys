@@ -51,11 +51,11 @@
                     error:function () {
                         sweetAlert("系统错误")
                         
-                    }
+                    },
 
                 })
             }
-
+        })
 
     .on('success.form.bv',function (e) {
         e.preventDefault();
@@ -74,4 +74,3 @@
             $('#RegisterForm').bootstrapValidator('validate');
         });
 
-    });
