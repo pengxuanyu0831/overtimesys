@@ -49,10 +49,8 @@ public class UserController {
         System.out.println("注册ing...");
         userService.insertUser(user);
 //        User userhvtest = userService.insetrUser(user);
-
-
         if (bindingResultUser.hasErrors()) {
-            return "successlogin";
+            return "redirect:/toRegister.jsp";
         }
 //        userService.insetrUser(userService);
         return "successlogin";

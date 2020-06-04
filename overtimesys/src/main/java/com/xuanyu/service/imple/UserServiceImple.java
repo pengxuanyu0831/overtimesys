@@ -1,11 +1,13 @@
 package com.xuanyu.service.imple;
 import com.xuanyu.dao.UserMapper;
+import com.xuanyu.dao.ValidatorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service("usersService")
@@ -38,6 +40,18 @@ public class UserServiceImple implements UserService {
 
     @Override
     public User validatorEmailExist(String email) {
-        return null;
+        return userMapper.validatorEmailExist(email);
     }
+
+    @Override
+    public User validatorUserExits(String email) {
+        return userMapper.validatorUserExist(email);
+    }
+
+    public User encryptedPassword(User user){
+        String salt = UUID.randomUUID().toString();
+        user.setSalt(salt);
+        return user;
+    }
+
 }

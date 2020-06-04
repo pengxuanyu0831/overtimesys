@@ -12,4 +12,6 @@ public interface UserService {
     public boolean login(User user);
 
     User validatorEmailExist(String email);
+
+    User validatorUserExits(String email);
 }

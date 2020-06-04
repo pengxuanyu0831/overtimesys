@@ -24,6 +24,8 @@ public class User {
     @NotEmpty(message = "{password.not.empty}")
     private String password;
 
+    private String salt;
+
     public Integer getId(){ return  id; }
 
     public void setId(Integer id) { this.id = id; }
@@ -39,6 +41,16 @@ public class User {
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
+
+
+
+    public String getSalt(){
+        return salt;
+    }
+
+    public void setSalt(String salt){
+        this.salt = salt;
+    }
 
 
     @Override
