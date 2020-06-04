@@ -28,8 +28,34 @@
                         }
                     }
                 }
+            },
+
+            submitHandler:function (validator,form,submitButton) {
+                var $mail = $("userEmail").val();
+                console.log($email);
+                $.ajax({url:path + "user/validatorEmail.do",
+                    type:'post',
+                    async:false,
+                    data:{
+                    "userEmail":$email
+                    },
+                    success:function (responseText) {
+                    if(responseText == "noEmail"){
+                        validator.defaultSubmit();
+                        sweetAlert("请到邮箱完成激活")
+                    }else {
+                        sweetAlert("邮箱已注册")
+                    }
+                        
+                    },
+                    error:function () {
+                        sweetAlert("系统错误")
+                        
+                    }
+
+                })
             }
-        })
+
 
     .on('success.form.bv',function (e) {
         e.preventDefault();
@@ -41,6 +67,7 @@
             $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
         }))
     })
+        })
         // 校验规则的调用。只有写在表单里的规则是起了作用的
         // 校验的是button，所以要写上button的id
         $('#RegisteredBtn').click(function() {
