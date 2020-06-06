@@ -61,7 +61,9 @@ public class UserController {
      */
     @RequestMapping("/validatorEmail.do")
     public void validatorEmail(String email , PrintWriter writer)throws Exception{
+        System.out.println("校验邮箱");
         User user = userService.validatorEmailExist(email);
+        System.out.println("邮箱校验完成");
         if(user != null && user.getId() != null){
             writer.write("hasEmail");
         }else {

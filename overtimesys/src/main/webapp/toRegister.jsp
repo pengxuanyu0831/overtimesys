@@ -58,7 +58,9 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">密码:</label>
                         <div class="col-md-4">
-                            <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
+                            <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种"
+                                data-bv-notempty
+                                data-bv-notempty-message="密码不能为空">
                             <form:errors path="pasword"></form:errors>
                         </div>
                     </div>

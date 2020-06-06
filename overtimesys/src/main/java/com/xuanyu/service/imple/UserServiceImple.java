@@ -40,11 +40,14 @@ public class UserServiceImple implements UserService {
 
     @Override
     public User validatorEmailExist(String email) {
+        // 这个好像根本没被调用？
+        System.out.println("校验用户是否注册");
         return userMapper.validatorEmailExist(email);
     }
 
     @Override
     public User validatorUserExits(String email) {
+        System.out.println("校验用户是否激活");
         return userMapper.validatorUserExist(email);
     }
 

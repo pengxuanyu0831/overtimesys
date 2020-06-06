@@ -27,6 +27,14 @@
                             message:'请输入有效的邮箱格式'
                         }
                     }
+                },
+                'password':{
+                    validatros:{
+                        notEmpty:{
+                            message:'密码不可为空'
+                        }
+
+                    }
                 }
             },
 
@@ -46,7 +54,6 @@
                     }else {
                         sweetAlert("邮箱已注册")
                     }
-                        
                     },
                     error:function () {
                         sweetAlert("系统错误")
