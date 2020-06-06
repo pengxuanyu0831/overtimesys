@@ -111,6 +111,7 @@
 <script src ="${pageContext.request.contextPath}/js/particles.min.js"></script>
 <script src ="${pageContext.request.contextPath}/js/app.js"></script>
 <script src ="${pageContext.request.contextPath}/js/stats.js"></script>
+<script src ="${pageContext.request.contextPath}/particles.json"></script>
 <script>
     var count_particles, stats, update;
     stats = new Stats;
