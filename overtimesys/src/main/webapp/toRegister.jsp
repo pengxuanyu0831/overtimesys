@@ -50,7 +50,7 @@
                         <from:errors path="*"></from:errors>
                         <label class="col-lg-3 control-label">用户名:</label>
                         <div class="col-md-4 ">
-                            <input type = "text" name = "name" placeholder="请输入用户名">
+                            <input type = "text" name = "name" class="form-control" placeholder="请输入用户名">
 <%--                                   data-bv-notempty--%>
 <%--                                   data-bv-notempty-message = "姓名不能为空"--%>
 <%--                                   data-bv-stringLength = "true"--%>
@@ -66,7 +66,7 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">密码:</label>
                         <div class="col-md-4">
-                            <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
+                            <input type = "password" name = "password" class="form-control" placeholder="必须包含数字、字母、符号中的两种">
 <%--                                data-bv-notempty--%>
 <%--                                data-bv-notempty-message="密码不能为空">--%>
                             <form:errors path="pasword"></form:errors>
@@ -78,7 +78,7 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">邮箱:</label>
                         <div class="col-md-4">
-                            <input type = "text" name = "email" id = "emailRegisterForm" placeholder="请输入邮箱地址">
+                            <input type = "text" name = "email" id = "emailRegisterForm" class="form-control" placeholder="请输入邮箱地址">
 <%--                                   data-bv-notempty--%>
 <%--                                   data-bv-notempty-message = "邮箱不能为空"--%>
 <%--                                   data-bv-emailAddress = "true"--%>
@@ -89,13 +89,18 @@
                 </div>
 
                 <div class = "col-lg-offset-2">
-                    <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
+                    <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn"
+                    onclick="vaduser()">注册</button>
                 </div>
                 <hr>
                 <div class = "form-group">
                     <a href="${pageContext.request.contextPath}/index.jsp">去登录</a>
                 </div>
             </form>
+            <div class = "col-lg-offset-2">
+                <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn"
+                        onclick="vaduser()">注册</button>
+            </div>
         </div>
     </div>
 </div>
@@ -104,8 +109,8 @@
 <script>
     // 校验规则的调用。只有写在表单里的规则是起了作用的
     // 校验的是button，所以要写上button的id
-    $('#RegisteredBtn').click(function() {
-        // $('#RegisterForm').bootstrapValidator('validate');
+    $('#RegisteredBtn').click(function () {
+        // $('#RegisterForm').bootstrapValidator('isValid()');
         var RegisterForm = $("#emailRegisterForm").val()
         if(RegisterForm != null && RegisterForm!= " ") {
             $ajax({
@@ -123,7 +128,7 @@
     });
 
 
-    $(function(){
+    $(function (){
         // 校验规则
         $('RegisterForm')
             .bootstrapValidator({
