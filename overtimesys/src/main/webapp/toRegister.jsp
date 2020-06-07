@@ -154,6 +154,18 @@
                             url:'users/validatorEmailExist'
                         }
                     }
+                },
+                'password':{
+                    validators:{
+                        notEmpty:{
+                            message:'密码不可为空'
+                        },
+                        stringLength:{
+                            min: 4,
+                            max: 16,
+                            message:'密码长度为4 - 16位之间'
+                        }
+                    }
                 }
             },
             })
