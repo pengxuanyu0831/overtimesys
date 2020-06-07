@@ -41,7 +41,7 @@
             submitHandler:function (validator,form,submitButton) {
                 var $mail = $("userEmail").val();
                 console.log($email);
-                $.ajax({url:path + "user/validatorEmail.do",
+                $.ajax({url:path + "user/validatorEmailExist",
                     type:'post',
                     async:false,
                     data:{
@@ -70,7 +70,7 @@
         var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
 
 
-        $post($form.attr('action',$form.serialize(),function () {
+        $.post($form.attr('action',$form.serialize(),function () {
             $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
         }))
     })

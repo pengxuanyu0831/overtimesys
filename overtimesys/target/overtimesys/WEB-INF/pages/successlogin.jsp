@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>首页</title>
+
+    <script type ="text/javascript" src = "${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="${pageContext.request.contextPath}/css/style.css">
     <link rel ="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
@@ -106,12 +108,11 @@
     </div>
 </nav>
 
-<script type ="text/javascript" src = "${pageContext.request.contextPath}/js/jquery-3.1.1.min.js"></script>
+
 
 <script src ="${pageContext.request.contextPath}/js/particles.min.js"></script>
 <script src ="${pageContext.request.contextPath}/js/app.js"></script>
 <script src ="${pageContext.request.contextPath}/js/stats.js"></script>
-<script src ="${pageContext.request.contextPath}/particles.json"></script>
 <script>
     var count_particles, stats, update;
     stats = new Stats;

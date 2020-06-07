@@ -27,9 +27,17 @@
 
     <!-- sweetalert提示 -->
     <script src = "js/sweetalert2.min.js"></script>
-    <link rel ="stylesheet" type = "text/css" href = "./css/sweetalert2.min.css">
+    <link rel ="stylesheet" type = "text/css" href = "css/sweetalert2.min.css">
 
-    <script src = "${pageContext.request.contextPath}/js/registered.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src ="js/app.js"></script>
+    <script src="js/stats.js"></script>
+
+
+    <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
+    <script type ="text/javascript" src = "js/bootstrapValidator.js"></script>
+
+<%--    <script src = "${pageContext.request.contextPath}/js/registered.js"></script>--%>
 </head>
 <body>
 <div id = "particles-js">
@@ -42,13 +50,13 @@
                         <from:errors path="*"></from:errors>
                         <label class="col-lg-3 control-label">用户名:</label>
                         <div class="col-md-4 ">
-                            <input type = "text" name = "name" placeholder="请输入用户名"
-                                   data-bv-notempty
-                                   data-bv-notempty-message = "姓名不能为空"
-                                   data-bv-stringLength = "true"
-                                   data-bv-stringLength-min = 4
-                                   data-bv-stringLength-max = 16
-                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">
+                            <input type = "text" name = "name" placeholder="请输入用户名">
+<%--                                   data-bv-notempty--%>
+<%--                                   data-bv-notempty-message = "姓名不能为空"--%>
+<%--                                   data-bv-stringLength = "true"--%>
+<%--                                   data-bv-stringLength-min = 4--%>
+<%--                                   data-bv-stringLength-max = 16--%>
+<%--                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">--%>
                             <form:errors path="name"></form:errors>
                         </div>
                     </div>
@@ -58,9 +66,9 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">密码:</label>
                         <div class="col-md-4">
-                            <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种"
-                                data-bv-notempty
-                                data-bv-notempty-message="密码不能为空">
+                            <input type = "password" name = "password" placeholder="必须包含数字、字母、符号中的两种">
+<%--                                data-bv-notempty--%>
+<%--                                data-bv-notempty-message="密码不能为空">--%>
                             <form:errors path="pasword"></form:errors>
                         </div>
                     </div>
@@ -70,18 +78,18 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">邮箱:</label>
                         <div class="col-md-4">
-                            <input type = "text" name = "email" placeholder="请输入邮箱地址"
-                                   data-bv-notempty
-                                   data-bv-notempty-message = "邮箱不能为空"
-                                   data-bv-emailAddress = "true"
-                                   data-bv-emailAddress-message = "请输入正确格式的邮箱地址">
+                            <input type = "text" name = "email" id = "emailRegisterForm" placeholder="请输入邮箱地址">
+<%--                                   data-bv-notempty--%>
+<%--                                   data-bv-notempty-message = "邮箱不能为空"--%>
+<%--                                   data-bv-emailAddress = "true"--%>
+<%--                                   data-bv-emailAddress-message = "请输入正确格式的邮箱地址">--%>
                             <form:errors path="email"></form:errors>
                         </div>
                     </div>
                 </div>
 
                 <div class = "col-lg-offset-2">
-                    <button type = "submit" class = " btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
+                    <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
                 </div>
                 <hr>
                 <div class = "form-group">
@@ -91,19 +99,35 @@
         </div>
     </div>
 </div>
-<script src="js/particles.min.js"></script>
-<script src ="js/app.js"></script>
-<script src="js/stats.js"></script>
 
-
-<script type ="text/javascript" src = "js/bootstrap.min.js"></script>
-<script type ="text/javascript" src = "js/bootstrapValidator.js"></script>
-
+</body>
 <script>
+    // 校验规则的调用。只有写在表单里的规则是起了作用的
+    // 校验的是button，所以要写上button的id
+    $('#RegisteredBtn').click(function() {
+        // $('#RegisterForm').bootstrapValidator('validate');
+        var RegisterForm = $("#emailRegisterForm").val()
+        if(RegisterForm != null && RegisterForm!= " ") {
+            $ajax({
+                url: "users/validatorEmailExist",
+                type: 'post',
+                async: false,
+                data: {
+                    "email": $email
+                },
+                success: function (data) {
+                    sweetAlert(data.message);
+                }
+            })
+        }
+    });
+
+
     $(function(){
         // 校验规则
-        $('RegisterForm').bootstrapValidator({
-            message:"不能为空",
+        $('RegisterForm')
+            .bootstrapValidator({
+            message:'不能为空',
             feedbackIcon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -126,31 +150,25 @@
                 'email':{
                     validators:{
                         emailAddress:{
-                            message:'请输入有效的邮箱格式'
+                            message:'请输入有效的邮箱格式',
+                            url:'users/validatorEmailExist'
                         }
                     }
                 }
-            }
-        })
-
+            },
+            })
+            // 点击提交摁键之后
             .on('success.form.bv',function (e) {
                 e.preventDefault();
                 var $form = $(e.target);
-                var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
-
-
-                $post($form.attr('action',$form.serialize(),function () {
-                    $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
-                }))
+                var bv = $form.data('bootstrapValidator');
+                // var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
+                $.post($form.attr('action'),$form.serialize(),function (data) {
+                    layer.msg(data.msg);
+                    // sweetAlert(data.msg)
+                    // $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+                })
             })
-        // 校验规则的调用。只有写在表单里的规则是起了作用的
-        // 校验的是button，所以要写上button的id
-        $('#RegisteredBtn').click(function() {
-            $('#RegisterForm').bootstrapValidator('validate');
-        });
-
     });
 </script>
-
-</body>
 </html>

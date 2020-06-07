@@ -1,11 +1,8 @@
 package com.xuanyu.controller;
 
 import com.xuanyu.model.User;
-import com.xuanyu.service.UserService;
-import com.xuanyu.service.ValidatorService;
 import com.xuanyu.service.imple.UserServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -59,8 +56,8 @@ public class UserController {
     @param email
 
      */
-    @RequestMapping("/validatorEmail.do")
-    public void validatorEmail(String email , PrintWriter writer)throws Exception{
+    @RequestMapping("/validatorEmailExist")
+    public PrintWriter validatorEmailExist(String email , PrintWriter writer)throws Exception{
         System.out.println("校验邮箱中...");
         User user = userService.validatorEmailExist(email);
         System.out.println("邮箱校验完成");
@@ -69,6 +66,7 @@ public class UserController {
         }else {
             writer.write("noEmail");
         }
+        return writer;
     }
 
     /**

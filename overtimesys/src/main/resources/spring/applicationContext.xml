@@ -80,9 +80,6 @@
         <property name="webBindingInitializer" ref="validateBinder"/>
     </bean>
 
-<!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>-->
-<!--    <property  name = "webBindingInitializer" ref ="validatorBinder"></property>-->
-<!--    </beans>-->
 </beans>
 
 

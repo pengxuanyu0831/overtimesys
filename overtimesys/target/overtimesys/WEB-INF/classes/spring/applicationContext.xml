@@ -54,4 +54,35 @@
         <!-- 配置sqlSessionFactoryBeanName -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+
+<!-- validator写这才是对的，spring-mvc里的没用 -->
+    <bean id = "validator" class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+            <property name = "providerClass" value = "org.hibernate.validator.HibernateValidator"/>
+            <property name = "validationMessageSource" ref ="messageSource"/>
+    </bean>
+
+
+    <bean id = "messageSource"
+              class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
+            <property name="basename" value="classpath:/validatemessage.properties"/>
+            <property name="fileEncodings" value="utf-8"/>
+            <property name="cacheSeconds" value="120"/>
+    </bean>
+
+    <bean id = "validateBinder"
+          class = "org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+        <property name="validator" ref="validator"/>
+    </bean>
+
+    <bean
+            class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <!-- 在webBindingInitializer中注入自定义属性编辑器、自定义转换器 -->
+        <property name="webBindingInitializer" ref="validateBinder"/>
+    </bean>
+
 </beans>
+
+
+
+
+
