@@ -151,8 +151,17 @@
                     validators:{
                         emailAddress:{
                             message:'请输入有效的邮箱格式',
-                            url:'users/validatorEmailExist'
-                        }
+                        },
+                        threshold:4,
+                        remote:{
+                            url:'users/validatorEmailExist.do',
+                            data:{
+                                email:$('input[email = "email"]').val()
+                            },
+                            message:"邮箱已存在",
+                            delay:2000,
+                            type:'POST'
+                    }
                     }
                 },
                 'password':{
