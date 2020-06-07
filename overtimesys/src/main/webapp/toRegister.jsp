@@ -97,37 +97,12 @@
                     <a href="${pageContext.request.contextPath}/index.jsp">去登录</a>
                 </div>
             </form>
-            <div class = "col-lg-offset-2">
-                <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn"
-                        onclick="vaduser()">注册</button>
-            </div>
         </div>
     </div>
 </div>
 
 </body>
 <script>
-    // 校验规则的调用。只有写在表单里的规则是起了作用的
-    // 校验的是button，所以要写上button的id
-    $('#RegisteredBtn').click(function () {
-        // $('#RegisterForm').bootstrapValidator('isValid()');
-        var RegisterForm = $("#emailRegisterForm").val()
-        if(RegisterForm != null && RegisterForm!= " ") {
-            $ajax({
-                url: "users/validatorEmailExist",
-                type: 'post',
-                async: false,
-                data: {
-                    "email": $email
-                },
-                success: function (data) {
-                    sweetAlert(data.message);
-                }
-            })
-        }
-    });
-
-
     $(function (){
         // 校验规则
         $('RegisterForm')
@@ -184,17 +159,38 @@
             },
             })
             // 点击提交摁键之后
-            .on('success.form.bv',function (e) {
-                e.preventDefault();
-                var $form = $(e.target);
-                var bv = $form.data('bootstrapValidator');
-                // var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
-                $.post($form.attr('action'),$form.serialize(),function (data) {
-                    layer.msg(data.msg);
-                    // sweetAlert(data.msg)
-                    // $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
-                })
-            })
+            // .on('success.form.bv',function (e) {
+            //     e.preventDefault();
+            //     var $form = $(e.target);
+            //     var bv = $form.data('bootstrapValidator');
+            //     // var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
+            //     $.post($form.attr('action'),$form.serialize(),function (data) {
+            //         layer.msg(data.msg);
+            //         // sweetAlert(data.msg)
+            //         // $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+            //     })
+            // })
+
+        // 校验规则的调用。只有写在表单里的规则是起了作用的
+        // 校验的是button，所以要写上button的id
+
+        // $('#RegisteredBtn').click(function () {
+        //     // $('#RegisterForm').bootstrapValidator('isValid()');
+        //     var RegisterForm = $("#emailRegisterForm").val()
+        //     if(RegisterForm != null && RegisterForm!= " ") {
+        //         $ajax({
+        //             url: "users/validatorEmailExist",
+        //             type: 'post',
+        //             async: false,
+        //             data: {
+        //                 "email": $email
+        //             },
+        //             success: function (data) {
+        //                 sweetAlert(data.message);
+        //             }
+        //         })
+        //     }
+        // });
     });
 </script>
 </html>
