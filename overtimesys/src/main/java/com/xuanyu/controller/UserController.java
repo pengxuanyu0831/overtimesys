@@ -44,11 +44,13 @@ public class UserController {
     // 对象校验
     public String insertUser(@RequestBody @Validated @ModelAttribute("infoModel") User user ,BindingResult bindingResultUser) {
         System.out.println("注册ing...");
-        userService.insertUser(user);
 //        User userhvtest = userService.insetrUser(user);
         if (bindingResultUser.hasErrors()) {
+            System.out.println("校验失败");
             return "redirect:/toRegister.jsp";
         }
+        System.out.println("注册成功，写入数据库");
+        userService.insertUser(user);
 //        userService.insetrUser(userService);
         return "successlogin";
     };
