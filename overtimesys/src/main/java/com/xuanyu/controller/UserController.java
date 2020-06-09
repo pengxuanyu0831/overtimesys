@@ -53,7 +53,7 @@ public class UserController {
         }
         System.out.println("注册成功，写入数据库");
 
-        userService.encryptedPassword(user);
+//        userService.encryptedPassword(user);
 
         userService.insertUser(user);
 //        userService.insetrUser(userService);
