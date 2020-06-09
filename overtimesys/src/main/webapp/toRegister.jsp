@@ -14,16 +14,12 @@
     <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link rel="stylesheet" href = "css/bootstrap.min.css"/>
     <!--jQuery -->
     <script type ="text/javascript" src = "js/jquery-3.1.1.min.js"></script>
 
     <!-- particles 背景-->
     <link rel ="stylesheet" media="screen" href="css/style.css">
-
-    <!--bootstrap & bootstrapValidator  -->
-    <link rel="stylesheet" href = "css/bootstrap.css"/>
-    <link rel="stylesheet" href = "css/bootstrapValidator.min.css">
-    <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
 
     <!-- sweetalert提示 -->
     <script src = "js/sweetalert2.min.js"></script>
@@ -33,7 +29,9 @@
     <script src ="js/app.js"></script>
     <script src="js/stats.js"></script>
 
-
+    <!--bootstrap & bootstrapValidator  -->
+    <link rel="stylesheet" href = "css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href = "css/bootstrapValidator.css"/>
     <script type ="text/javascript" src = "js/bootstrap.min.js"></script>
     <script type ="text/javascript" src = "js/bootstrapValidator.js"></script>
 
@@ -51,7 +49,13 @@
                         <from:errors path="*"></from:errors>
                         <label class="col-lg-3 control-label">用户名:</label>
                         <div class="col-md-4 ">
-                            <input type = "text" name = "inputName" class="form-control" placeholder="请输入用户名">
+                            <input type = "text" name = "inputName" class="form-control" placeholder="请输入用户名"
+                                   data-bv-notempty
+                                   data-bv-notempty-message = "姓名不能为空"
+                                   data-bv-stringLength = "true"
+                                   data-bv-stringLength-min = 4
+                                   data-bv-stringLength-max = 16
+                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">
                             <form:errors path="inputName"></form:errors>
                         </div>
                     </div>
@@ -63,7 +67,7 @@
                         <div class="col-md-4">
                             <input type = "password" name = "inputPassword" class="form-control"
                                    placeholder="必须包含数字、字母、符号中的两种"
-                                   data-error="密码不能为空" required>
+                                   data-error="密码不能为空" >
                             <div class = "help-block">密码至少包括数字、字母、下划线其中的两种</div>
                             <div class="help-block with-errors"></div>
                             <form:errors path="inputPassword"></form:errors>
@@ -75,7 +79,7 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">邮箱:</label>
                         <div class="col-md-4">
-                            <input type = "text" name = "inputEmail" id = "emailRegisterForm" class="form-control" placeholder="请输入邮箱地址">
+                            <input type = "text" name = "inputEmail" id = "emailRegisterForm" class="form-control" placeholder="请输入邮箱地址" >
                             <form:errors path="inputEmail"></form:errors>
                         </div>
                     </div>
@@ -99,7 +103,6 @@
         // 校验规则
         $('RegisterForm')
             .bootstrapValidator({
-            message:'不能为空',
             feedbackIcon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -107,7 +110,6 @@
             },
             fields:{
                 'inputName' :{
-                    message:'用户名无效',
                     validators:{
                         notEmpty:{
                             message:'用户名不能为空'
@@ -126,7 +128,7 @@
                         },
                         threshold:4,
                         remote:{
-                            url:'/users/validatorEmailExist.do',
+                            url:'/users/validatorEmailExist',
                             data:{
                                 email:$('input[email = "email"]').val()
                             },
@@ -152,41 +154,20 @@
                         }
                     }
                 }
-            },
+            }
+            });
+            $("#RegisteredBtn").click(function () {
+                $("RegisterForm").bootstrapValidator('validate');
             })
-            // 点击提交摁键之后
-            // .on('success.form.bv',function (e) {
+
+            //  .on('success.form.bv',function (e) {
             //     e.preventDefault();
             //     var $form = $(e.target);
-            //     var bv = $form.data('bootstrapValidator');
-            //     // var bv = $form.data('bootstrapValidator').validateField('bootstrapValidator');
-            //     $.post($form.attr('action'),$form.serialize(),function (data) {
-            //         layer.msg(data.msg);
-            //         // sweetAlert(data.msg)
-            //         // $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
-            //     })
+            //     var bv = $form.data('bootstrapValidator').validateField('inputName');
+            //     $post($form.attr('action',$form.serialize(),function (e) {
+            //         $('RegisterForm').bootstrapValidator('disableSubmitButtons',false);
+            //     }))
             // })
-
-        // 校验规则的调用。只有写在表单里的规则是起了作用的
-        // 校验的是button，所以要写上button的id
-
-        // $('#RegisteredBtn').click(function () {
-        //     // $('#RegisterForm').bootstrapValidator('isValid()');
-        //     var RegisterForm = $("#emailRegisterForm").val()
-        //     if(RegisterForm != null && RegisterForm!= " ") {
-        //         $ajax({
-        //             url: "users/validatorEmailExist",
-        //             type: 'post',
-        //             async: false,
-        //             data: {
-        //                 "email": $email
-        //             },
-        //             success: function (data) {
-        //                 sweetAlert(data.message);
-        //             }
-        //         })
-        //     }
-        // });
     });
 </script>
 </html>

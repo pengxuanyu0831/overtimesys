@@ -58,13 +58,13 @@
 <!-- validator写这才是对的，spring-mvc里的没用 -->
     <bean id = "validator" class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
             <property name = "providerClass" value = "org.hibernate.validator.HibernateValidator"/>
-            <property name = "validationMessageSource" ref ="messageSource"/>
+            <property name = "validationMessageSource" ref ="validatemessage"/>
     </bean>
 
 
-    <bean id = "messageSource"
+    <bean id = "validatemessage"
               class = "org.springframework.context.support.ReloadableResourceBundleMessageSource">
-            <property name="basename" value="classpath:/validatemessage.properties"/>
+            <property name="basename" value="classpath:/validatemessage"/>
             <property name="fileEncodings" value="utf-8"/>
             <property name="cacheSeconds" value="120"/>
     </bean>

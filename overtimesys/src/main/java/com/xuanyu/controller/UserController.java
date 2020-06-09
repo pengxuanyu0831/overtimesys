@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,14 +43,18 @@ public class UserController {
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insertUser(@RequestBody @Validated @ModelAttribute("infoModel") User user ,BindingResult bindingResultUser) {
+    public String insertUser(@RequestBody  @ModelAttribute("infoModel") @Validated User user ,BindingResult bindingResultUser) {
         System.out.println("注册ing...");
+//        List<Object> allErrors = Collections.singletonList(bindingResultUser.getAllErrors());
 //        User userhvtest = userService.insetrUser(user);
         if (bindingResultUser.hasErrors()) {
             System.out.println("校验失败");
             return "redirect:/toRegister.jsp";
         }
         System.out.println("注册成功，写入数据库");
+
+        userService.encryptedPassword(user);
+
         userService.insertUser(user);
 //        userService.insetrUser(userService);
         return "successlogin";
@@ -59,7 +64,7 @@ public class UserController {
 
      */
     @RequestMapping("/validatorEmailExist")
-    public PrintWriter validatorEmailExist(String email , PrintWriter writer)throws Exception{
+    public void validatorEmailExist(String email , PrintWriter writer){
         System.out.println("校验邮箱中...");
         User user = userService.validatorEmailExist(email);
         System.out.println("邮箱校验完成");
@@ -68,7 +73,6 @@ public class UserController {
         }else {
             writer.write("noEmail");
         }
-        return writer;
     }
 
     /**
