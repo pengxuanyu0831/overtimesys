@@ -44,20 +44,15 @@
     <div class="container" style="margin-top: 100px;">
         <div class = "center">
             <form:form modelAttribute="infoModel" method="post"></form:form>
-            <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insertUser">
+            <form role = "form" data-toggle = "validator"
+                  id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insertUser">
                 <div class = "form-group">
                     <div class = row>
                         <from:errors path="*"></from:errors>
                         <label class="col-lg-3 control-label">用户名:</label>
                         <div class="col-md-4 ">
-                            <input type = "text" name = "name" class="form-control" placeholder="请输入用户名">
-<%--                                   data-bv-notempty--%>
-<%--                                   data-bv-notempty-message = "姓名不能为空"--%>
-<%--                                   data-bv-stringLength = "true"--%>
-<%--                                   data-bv-stringLength-min = 4--%>
-<%--                                   data-bv-stringLength-max = 16--%>
-<%--                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">--%>
-                            <form:errors path="name"></form:errors>
+                            <input type = "text" name = "inputName" class="form-control" placeholder="请输入用户名">
+                            <form:errors path="inputName"></form:errors>
                         </div>
                     </div>
                 </div>
@@ -66,10 +61,12 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">密码:</label>
                         <div class="col-md-4">
-                            <input type = "password" name = "password" class="form-control" placeholder="必须包含数字、字母、符号中的两种">
-<%--                                data-bv-notempty--%>
-<%--                                data-bv-notempty-message="密码不能为空">--%>
-                            <form:errors path="pasword"></form:errors>
+                            <input type = "password" name = "inputPassword" class="form-control"
+                                   placeholder="必须包含数字、字母、符号中的两种"
+                                   data-error="密码不能为空" required>
+                            <div class = "help-block">密码至少包括数字、字母、下划线其中的两种</div>
+                            <div class="help-block with-errors"></div>
+                            <form:errors path="inputPassword"></form:errors>
                         </div>
                     </div>
                 </div>
@@ -78,19 +75,14 @@
                     <div class = row>
                         <label class="col-lg-3 control-label">邮箱:</label>
                         <div class="col-md-4">
-                            <input type = "text" name = "email" id = "emailRegisterForm" class="form-control" placeholder="请输入邮箱地址">
-<%--                                   data-bv-notempty--%>
-<%--                                   data-bv-notempty-message = "邮箱不能为空"--%>
-<%--                                   data-bv-emailAddress = "true"--%>
-<%--                                   data-bv-emailAddress-message = "请输入正确格式的邮箱地址">--%>
-                            <form:errors path="email"></form:errors>
+                            <input type = "text" name = "inputEmail" id = "emailRegisterForm" class="form-control" placeholder="请输入邮箱地址">
+                            <form:errors path="inputEmail"></form:errors>
                         </div>
                     </div>
                 </div>
 
                 <div class = "col-lg-offset-2">
-                    <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn"
-                    onclick="vaduser()">注册</button>
+                    <button type = "submit" class = "btn btn-primary" name = "Registered" id="RegisteredBtn">注册</button>
                 </div>
                 <hr>
                 <div class = "form-group">
@@ -114,7 +106,7 @@
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields:{
-                'name' :{
+                'inputName' :{
                     message:'用户名无效',
                     validators:{
                         notEmpty:{
@@ -127,14 +119,14 @@
                         }
                     }
                 },
-                'email':{
+                'inputEmail':{
                     validators:{
                         emailAddress:{
                             message:'请输入有效的邮箱格式',
                         },
                         threshold:4,
                         remote:{
-                            url:'users/validatorEmailExist.do',
+                            url:'/users/validatorEmailExist.do',
                             data:{
                                 email:$('input[email = "email"]').val()
                             },
@@ -144,7 +136,7 @@
                     }
                     }
                 },
-                'password':{
+                'inputPassword':{
                     validators:{
                         notEmpty:{
                             message:'密码不可为空'
@@ -153,6 +145,10 @@
                             min: 4,
                             max: 16,
                             message:'密码长度为4 - 16位之间'
+                        },
+                        different:{
+                            field:'inputName',
+                            message:'用户名和密码不能一致'
                         }
                     }
                 }
