@@ -48,20 +48,20 @@
     <div class="container" style="margin-top: 100px;">
         <div class = "center">
             <form:form modelAttribute="infoModel" method="post"></form:form>
-            <form id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insertUser">
+            <form class = " required-validate" id = "RegisterForm" method="post" name = "RegisterForm" action="${pageContext.request.contextPath}/users/insertUser">
                 <div class = "form-group">
                     <div class = row>
                         <from:errors path="*"></from:errors>
                         <div class="col-md-4 ">
                             <label class="col-lg-3 control-label form-inline">用户名:</label>
                             <input type = "text" name = "name" class="form-control" placeholder="请输入用户名"
-                                   data-bv-notempty
-                                   data-bv-notempty-message = "姓名不能为空"
-                                   data-bv-stringLength = "true"
-                                   data-bv-stringLength-min = 4
-                                   data-bv-stringLength-max = 16
-                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">
-                            <form:errors path="inputName"></form:errors>
+                                    data-bv-notempty
+                                    data-bv-notempty-message = "姓名不能为空"
+                                    data-bv-stringLength = "true"
+                                    data-bv-stringLength-min = 4
+                                    data-bv-stringLength-max = 16
+                                    data-bv-stringLength-message = "用户名长度限制在4-16位之间">
+                            <form:errors path="name"></form:errors>
                         </div>
                     </div>
                 </div>
@@ -72,10 +72,12 @@
                             <label class="col-lg-3 control-label form-inline">密码:</label>
                             <input type = "password" name = "password" class="form-control"
                                    placeholder="必须包含数字、字母、符号中的两种"
-                                   data-error="密码不能为空" >
-                            <div class = "help-block">密码至少包括数字、字母、下划线其中的两种</div>
+                                   data-bv-notempty
+                                   data-bv-notempty-message = "密码不能为空">
+<%--                                   data-error="密码不能为空" >--%>
+<%--                            <div class = "help-block">密码至少包括数字、字母、下划线其中的两种</div>--%>
                             <div class="help-block with-errors"></div>
-                            <form:errors path="inputPassword"></form:errors>
+                            <form:errors path="password"></form:errors>
                         </div>
                     </div>
                 </div>
@@ -84,8 +86,12 @@
                     <div class = row>
                         <div class="col-md-4">
                             <label class="col-lg-3 control-label form-inline">邮箱:</label>
-                            <input type = "text" name = "email" class="form-control" placeholder="请输入邮箱地址" >
-                            <form:errors path="inputEmail"></form:errors>
+                            <input type = "text" name = "email" class="form-control" placeholder="请输入邮箱地址"
+                                   data-bv-emailAddress = "true"
+                                   data-bv-emailAddress-message = "请输入正确格式的邮箱地址"
+                                   data-bv-notempty
+                                   data-bv-notempty-message = "邮箱地址不能为空">
+                            <form:errors path="email"></form:errors>
                         </div>
                     </div>
                 </div>
@@ -105,7 +111,7 @@
 <script>
     $(document).ready(function (){
         // 校验规则
-        $('.RegisterForm').bootstrapValidator({
+        $('RegisterForm').bootstrapValidator({
             feedbackIcon: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
@@ -162,10 +168,70 @@
                 }
             }
             });
-            $("#RegisteredBtn").click(function () {
-                $("RegisterForm").bootstrapValidator('validate');
-            }).on('success.form.bv',function () {
-            })
+
+        $(function() {
+            // validate form
+            $("form.required-validate").each(function() {
+                var $form = $(this);
+                $form.bootstrapValidator();
+
+                // 修复bootstrap validator重复向服务端提交bug
+                $form.on('success.form.bv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
+                });
+
+
+            });
+        });
+
+
+
+
+        function validateCallback(form, callback, confirmMsg) {
+            YUNM.debug("进入到form表单验证和提交");
+
+            var $form = $(form);
+
+            var data = $form.data('bootstrapValidator');
+            if (data) {
+                // 修复记忆的组件不验证
+                data.validate();
+
+                if (!data.isValid()) {
+                    return false;
+                }
+            }
+
+
+            $.ajax({
+                type : form.method || 'POST',
+                url : $form.attr("action"),
+                data : $form.serializeArray(),
+                dataType : "json",
+                cache : false,
+                success : callback || YUNM.ajaxDone,
+                error : YUNM.ajaxError
+            });
+
+            return false;
+        }
+
+
+
+        // function adduser() {
+            //     $('RegisterForm').data('bootstrapValidator').validate();
+            //     if (!$('RegisterForm').data('bootstrapValidator').isValid()) {
+            //         return;
+            //     }
+            //     $("#RegisteredBtn").click(function () {
+            //         $("RegisterForm").bootstrapValidator('validate');
+            //     }).on('success.form.bv', function (e) {
+            //         e.preventDefault();
+            //         var $form = $(e.target);
+            //         var bv = $form.data('bootstrapValidator')
+            //     })
+            // }
 
             //  .on('success.form.bv',function (e) {
             //     e.preventDefault();
