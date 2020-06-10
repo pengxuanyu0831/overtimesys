@@ -53,6 +53,7 @@ public class UserServiceImple implements UserService {
 
     public User encryptedPassword(User user){
         String salt = UUID.randomUUID().toString();
+//        Md5Hash md5hsah = new Md5Hash(user.getPassword(),salt,2);
         user.setSalt(salt);
         return user;
     }

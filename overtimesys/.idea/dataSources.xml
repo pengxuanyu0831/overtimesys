@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="localhost" uuid="c87480a1-cde4-4ce3-9b8b-17dfba5f4e5c">
+    <data-source source="LOCAL" name="MySQL - springdb@localhost" uuid="af9d0db4-4d1b-4b93-8981-4011759e4555">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/springdb?useUnicode=true&amp;serverTimezone=GMT</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/springdb</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
@@ -13,7 +13,6 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
-        <property name="serverTimezone" value="0" />
       </driver-properties>
     </data-source>
   </component>
