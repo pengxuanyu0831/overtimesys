@@ -167,6 +167,13 @@
       <version>1.0.0.GA</version>
     </dependency>
 
+<!--    java邮件-->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.4.4</version>
+    </dependency>
+
     <!--  日志文件管理包  -->
     <!--  log start  -->
     <dependency>
