@@ -57,8 +57,8 @@
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
                                 <div class =row >
-                                <label class ="col-lg-4 control-label">用户名:</label>
                                 <div class ="col-lg-5">
+                                    <label class ="col-lg-4 control-label form-inline">用户名:</label>
                                     <input type = "text" name = "name">
                                 </div>
                                 </div>
@@ -66,8 +66,9 @@
 
                             <div class="form-group">
                                 <div class = row>
-                                <label class ="col-lg-4 control-label">密码:</label>
+
                                 <div class ="col-lg-5 ">
+                                    <label class ="col-lg-4 control-label form-inline">密码:</label>
                                     <input type ="password" name = "password">
                                 </div>
                                 </div>

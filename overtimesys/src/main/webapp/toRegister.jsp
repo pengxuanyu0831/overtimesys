@@ -52,15 +52,15 @@
                 <div class = "form-group">
                     <div class = row>
                         <from:errors path="*"></from:errors>
-                        <label class="col-lg-3 control-label">用户名:</label>
                         <div class="col-md-4 ">
-                            <input type = "text" name = "name" class="form-control" placeholder="请输入用户名">
-<%--                                   data-bv-notempty--%>
-<%--                                   data-bv-notempty-message = "姓名不能为空"--%>
-<%--                                   data-bv-stringLength = "true"--%>
-<%--                                   data-bv-stringLength-min = 4--%>
-<%--                                   data-bv-stringLength-max = 16--%>
-<%--                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">--%>
+                            <label class="col-lg-3 control-label form-inline">用户名:</label>
+                            <input type = "text" name = "name" class="form-control" placeholder="请输入用户名"
+                                   data-bv-notempty
+                                   data-bv-notempty-message = "姓名不能为空"
+                                   data-bv-stringLength = "true"
+                                   data-bv-stringLength-min = 4
+                                   data-bv-stringLength-max = 16
+                                   data-bv-stringLength-message = "用户名长度限制在4-16位之间">
                             <form:errors path="inputName"></form:errors>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
 
                 <div class = "form-group">
                     <div class = row>
-                        <label class="col-lg-3 control-label">密码:</label>
                         <div class="col-md-4">
+                            <label class="col-lg-3 control-label form-inline">密码:</label>
                             <input type = "password" name = "password" class="form-control"
                                    placeholder="必须包含数字、字母、符号中的两种"
                                    data-error="密码不能为空" >
@@ -82,8 +82,8 @@
 
                 <div class = "form-group">
                     <div class = row>
-                        <label class="col-lg-3 control-label">邮箱:</label>
                         <div class="col-md-4">
+                            <label class="col-lg-3 control-label form-inline">邮箱:</label>
                             <input type = "text" name = "email" class="form-control" placeholder="请输入邮箱地址" >
                             <form:errors path="inputEmail"></form:errors>
                         </div>
