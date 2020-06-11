@@ -1,6 +1,7 @@
 package com.xuanyu.service.imple;
 import com.xuanyu.dao.UserMapper;
 import com.xuanyu.dao.ValidatorMapper;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
@@ -51,10 +52,13 @@ public class UserServiceImple implements UserService {
         return userMapper.validatorUserExist(email);
     }
 
+    @Override
     public User encryptedPassword(User user){
         String salt = UUID.randomUUID().toString();
-//        Md5Hash md5hsah = new Md5Hash(user.getPassword(),salt,2);
+        Md5Hash md5hsah = new Md5Hash(user.getPassword(),salt,2);
+        user.setPassword(md5hsah.toString());
         user.setSalt(salt);
+        System.out.println(salt.toString());
         return user;
     }
 

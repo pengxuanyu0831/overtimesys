@@ -14,4 +14,6 @@ public interface UserService {
     User validatorEmailExist(String email);
 
     User validatorUserExits(String email);
+
+    User encryptedPassword(User user);
 }

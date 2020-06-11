@@ -73,7 +73,11 @@
                             <input type = "password" name = "password" class="form-control"
                                    placeholder="必须包含数字、字母、符号中的两种"
                                    data-bv-notempty
-                                   data-bv-notempty-message = "密码不能为空">
+                                   data-bv-notempty-message = "密码不能为空"
+                                   data-bv-stringLength="true"
+                                   data-bv-stringLength-max = 12
+                                   data-bv-stringLength-min = 6
+                                   data-bv-stringLength-message ="用户密码至少6位，不得超过12位">
 <%--                                   data-error="密码不能为空" >--%>
 <%--                            <div class = "help-block">密码至少包括数字、字母、下划线其中的两种</div>--%>
                             <div class="help-block with-errors"></div>

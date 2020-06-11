@@ -35,13 +35,10 @@ public interface UserMapper{
     @Select("select * from user where name=#{name} and password=#{password}")
     public User login(User user);
 
-    @Select("select * from user where email = {email}")
     User validatorEmailExist(String email);
 
-    @Select("select * from user where email = {email}")
     User validatorUserExist(String email);
 
-    @Update("update user set password = {password} where id = {id}")
     User encryptedPassword(String password);
 
     // @Delete("")
