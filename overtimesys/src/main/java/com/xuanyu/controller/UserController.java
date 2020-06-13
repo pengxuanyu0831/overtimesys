@@ -52,9 +52,8 @@ public class UserController {
             return "redirect:/toRegister.jsp";
         }
         System.out.println("注册成功，写入数据库");
-
+        // md5加密
         userService.encryptedPassword(user);
-
         userService.insertUser(user);
 //        userService.insetrUser(userService);
         return "successlogin";

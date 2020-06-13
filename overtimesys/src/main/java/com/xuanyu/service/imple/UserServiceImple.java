@@ -58,7 +58,7 @@ public class UserServiceImple implements UserService {
         Md5Hash md5hsah = new Md5Hash(user.getPassword(),salt,2);
         user.setPassword(md5hsah.toString());
         user.setSalt(salt);
-        System.out.println(salt.toString());
+        // System.out.println(salt.toString());
         return user;
     }
 
