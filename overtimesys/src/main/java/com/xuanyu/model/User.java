@@ -4,13 +4,14 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  * @author pengxy
  * @version UpToBlog V0.1
  */
-public class User {
+public class User implements Serializable {
     // id 非空
     private Integer id;
     @NotEmpty(message = "{name.not.empty}")

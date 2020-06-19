@@ -28,7 +28,7 @@ public class UserController {
 
     @RequestMapping("/findUser")
     public String findUsers(Model model){
-        System.out.println("表现层：查询用户");
+        System.out.println("controller：findUsers");
         //调用service对象的方法进行测试
         List<User> list = userService.findUsers();
         model.addAttribute("list",list);

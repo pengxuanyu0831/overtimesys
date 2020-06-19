@@ -7,31 +7,31 @@ import com.xuanyu.model.User;
 import com.xuanyu.service.UserService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.UUID;
 
-
 @Service("usersService")
-public class UserServiceImple implements UserService {
+public class UserServiceImple<T> implements UserService {
     @Autowired
     private UserMapper userMapper;
 
     @Override
     public List<User>findUsers(){
-        System.out.println("业务层 ：查询所有用户");
+        System.out.println("service ：findUsers");
         return userMapper.findUsers();
     }
 
     @Override
     public User insertUser(User user){
-        System.out.println("业务层：用户注册");
+        System.out.println("service：insertUser");
         userMapper.insertUser(user);
         return user;
     }
 
     @Override
     public boolean login(User user){
-        System.out.println("业务层：用户登录");
+        System.out.println("service：login");
         if(userMapper.login(user)==null){
             return false;
         }else {
@@ -60,6 +60,10 @@ public class UserServiceImple implements UserService {
         user.setSalt(salt);
         // System.out.println(salt.toString());
         return user;
+    }
+
+    public T selectByPrimaryKey(String id){
+        return (T) userMapper.selectByPrimaryKey(id);
     }
 
 }

@@ -80,6 +80,8 @@
         <property name="webBindingInitializer" ref="validateBinder"/>
     </bean>
 
+    <import resource="classpath:spring/application-Mail.xml"/>
+
 </beans>
 
 

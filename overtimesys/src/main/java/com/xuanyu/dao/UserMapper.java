@@ -36,8 +36,7 @@ public interface UserMapper{
     public User login(User user);
 
     @Select("select * from user where id = #{id}")
-    public
-
+    public User selectByPrimaryKey(String user);
 
     User validatorEmailExist(String email);
 

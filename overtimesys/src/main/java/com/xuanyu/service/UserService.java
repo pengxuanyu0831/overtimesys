@@ -3,7 +3,7 @@ import com.xuanyu.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService<T> {
     // 查询全部用户
     public List<User>findUsers();
 
@@ -16,6 +16,8 @@ public interface UserService {
     User validatorUserExits(String email);
 
     User encryptedPassword(User user);
+
+    T selectByPrimaryKey(String id);
 
 
 }
