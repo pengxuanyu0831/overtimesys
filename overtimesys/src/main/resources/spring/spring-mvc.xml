@@ -26,61 +26,6 @@
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources  location="/fonts" mapping="/fonts/**"/>
 
-    <!-- 配置Freemarker屬性文件路徑 -->
-    <bean id="freemarkerConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:freemarker.properties"/>
-    </bean>
-
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <!-- 視圖解析器會在/WEB-INF/ftl/路徑下掃描視圖文件 -->
-        <property name="templateLoaderPath" value="/WEB-INF/ftl"/>
-        <!-- 设置页面中文乱码问题 -->
-        <property name="freemarkerSettings">
-            <props>
-                <prop key="defaultEncoding">UTF-8</prop>
-            </props>
-        </property>
-        <property name="freemarkerVariables">
-            <map>
-                <entry key="xml_escape" value-ref="fmXmlEscape"/>
-            </map>
-        </property>
-    </bean>
-
-    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
-    <!-- 配置freeMarker視圖解析器 -->
-    <bean id="freemakerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-
-        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
-        <!-- 掃描路徑內所有以ftl結尾的文件 -->
-        <property name="viewNames">
-            <array>
-                <value>*.ftl</value>
-            </array>
-        </property>
-
-        <!-- 设置相关属性 -->
-        <!--<property name="cache" value="true"/>-->
-        <property name="contentType" value="text/html; charset=UTF-8"/>
-        <property name="exposeRequestAttributes" value="true"/>
-        <property name="exposeSessionAttributes" value="true"/>
-        <property name="exposeSpringMacroHelpers" value="true"/>
-        <property name="requestContextAttribute" value="request"/>
-
-        <!-- 給視圖解析器配置優先級，你可以給之前jsp視圖解析器的值配為2 -->
-        <property name="order" value="1"/>
-    </bean>
-
-    <bean id="viewResolverCommon"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
-        <property name="viewClass">
-            <value>org.springframework.web.servlet.view.InternalResourceView
-            </value>
-        </property>
-        <property name="order" value="2"/>
-    </bean>
-
     <mvc:annotation-driven validator="validator"/>
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
