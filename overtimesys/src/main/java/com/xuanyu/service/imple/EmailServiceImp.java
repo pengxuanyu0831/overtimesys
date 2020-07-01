@@ -29,20 +29,22 @@ public class EmailServiceImp implements EmailService {
 //        mailMessage(user,content,url);
 //    }
 //
-//    @Override
-//    public void mailMessage(User user, String content, String url ) throws MessagingException {
-////        Map<String,Object> map = new HashMap();
-////        map.put("name",user.getName());
-////        map.put("content",content);
-////        map.put("url",url);
-//        MimeMessage mine = mailSender.createMimeMessage();
-//        MimeMessageHelper helper = new MimeMessageHelper(mine, true,"utf-8");
-//
-//        helper.setFrom("739421672@qq.com");
-//        helper.setTo(user.getEmail());
-//        helper.setSubject("注册用户");
-//        helper.setText(user.getContent(),true);
+    /*@Override
+                      ####MimeMessage是发附件用的#####
+            public void mailMessage(User user, String content, String url ) throws MessagingException {
+//        Map<String,Object> map = new HashMap();
+//        map.put("name",user.getName());
+//        map.put("content",content);
+//        map.put("url",url);
 
+                MimeMessage mine = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(mine, true,"utf-8");
+
+                helper.setFrom("739421672@qq.com");
+                helper.setTo(user.getEmail());
+                helper.setSubject("注册用户");
+                helper.setText(user.getContent(),true);
+*/
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("739421672@qq.com");
         message.setTo(user.getEmail());

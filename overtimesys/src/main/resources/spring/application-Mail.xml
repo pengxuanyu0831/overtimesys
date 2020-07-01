@@ -18,9 +18,9 @@
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host" value="smtp.qq.com"/>
-<!--        <property name="port" value="587"/>-->
+        <property name="port" value="587"/>
         <property name="username" value="739421672@qq.com"/>
-        <property name="password" value="pengxy736499"/>
+        <property name="password" value="fnpvpzcnrukwbbdb"/>
 <!--        <property name="javaMailProperties"/>-->
 <!--            <props>-->
 <!--                <prop key="mail.smtp.auth">ture</prop>-->
