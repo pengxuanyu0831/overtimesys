@@ -35,7 +35,7 @@
     </bean>
 
 
-    <bean id="mailContorller" class="com.xuanyu.controller.UserController">
-        <property name="mailService" ref="EmailService"/>
-    </bean>
+<!--    <bean id="mailContorller" class="com.xuanyu.controller.UserController">-->
+<!--        <property name="mailService" ref="EmailServiceImp"/>-->
+<!--    </bean>-->
 </beans>

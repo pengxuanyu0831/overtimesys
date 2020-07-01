@@ -1,6 +1,8 @@
 package com.xuanyu.controller;
 
 import com.xuanyu.model.User;
+import com.xuanyu.service.EmailService;
+import com.xuanyu.service.imple.EmailServiceImp;
 import com.xuanyu.service.imple.UserServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.List;
@@ -25,6 +28,9 @@ public class UserController {
 
     @Autowired
     protected UserServiceImple userService;
+
+    @Autowired
+    protected EmailServiceImp emailServiceImp;
 
     @RequestMapping("/findUser")
     public String findUsers(Model model){
@@ -43,7 +49,7 @@ public class UserController {
     //开启数据校验，添加在类上用于校验方法，添加在方法参数中用于校验参数对象。(添加在方法上无效)
     @Validated
     // 对象校验
-    public String insertUser(@RequestBody  @ModelAttribute("infoModel") @Validated User user ,BindingResult bindingResultUser) {
+    public String insertUser(@RequestBody  @ModelAttribute("infoModel") @Validated User user ,BindingResult bindingResultUser) throws MessagingException {
         System.out.println("注册ing...");
 //        List<Object> allErrors = Collections.singletonList(bindingResultUser.getAllErrors());
 //        User userhvtest = userService.insetrUser(user);
@@ -56,6 +62,8 @@ public class UserController {
         userService.encryptedPassword(user);
         userService.insertUser(user);
 //        userService.insetrUser(userService);
+        String url = "${pageContext.request.contextPath}"+ "/user/active?id=" + user.getId();
+        emailServiceImp.sendMail(user,"注册账号",url);
         return "successlogin";
     };
     /*
@@ -88,6 +96,29 @@ public class UserController {
         }else{
             return "falselogin";
         }
+    }
+
+    @RequestMapping("/active")
+    public String active(String id)throws Exception{
+        User user = (User) userService.selectByPrimaryKey(id);
+        String title = "";
+        String content = "";
+        String subject ="";
+
+        if(user != null){
+            if(System.currentTimeMillis() - user.getTokenTime().getTime() < 86400000){
+                userService.insertUser(user);
+                title="成功激活";
+                content = "成功激活账号";
+                subject = "激活成功";
+            }
+            else{
+                title="激活失败";
+                content = "激活时间大于24小时";
+                subject="请重新发送激活邮件";
+            }
+        }
+        return "index";
     }
 }
 

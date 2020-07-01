@@ -1,0 +1,51 @@
+package com.xuanyu.service.imple;
+
+import com.xuanyu.model.User;
+import com.xuanyu.service.EmailService;
+import com.xuanyu.service.UserService;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+@Service
+public class EmailServiceImp implements EmailService {
+    @Autowired
+    // 注入Spring封装的javamail，Spring的xml中已让框架装配
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private UserService userService;
+
+
+    @Override
+    public void sendMail(User user, String content, String url) throws MessagingException {
+        System.out.println("邮件发送中..");
+//        mailMessage(user,content,url);
+//    }
+//
+//    @Override
+//    public void mailMessage(User user, String content, String url ) throws MessagingException {
+////        Map<String,Object> map = new HashMap();
+////        map.put("name",user.getName());
+////        map.put("content",content);
+////        map.put("url",url);
+        MimeMessage mine = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(mine, true,"utf-8");
+
+        helper.setFrom("739421672@qq.com");
+        helper.setTo(user.getEmail());
+        helper.setSubject("注册用户");
+        helper.setText(user.getContent(),true);
+
+        mailSender.send(mine);
+    }
+//    public JavaMailSender getMailSender() {
+//        return mailSender;
+//    }
+
+}
