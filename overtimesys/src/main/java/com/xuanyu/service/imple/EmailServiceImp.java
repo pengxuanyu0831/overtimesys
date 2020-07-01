@@ -5,6 +5,7 @@ import com.xuanyu.service.EmailService;
 import com.xuanyu.service.UserService;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -34,15 +35,22 @@ public class EmailServiceImp implements EmailService {
 ////        map.put("name",user.getName());
 ////        map.put("content",content);
 ////        map.put("url",url);
-        MimeMessage mine = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mine, true,"utf-8");
+//        MimeMessage mine = mailSender.createMimeMessage();
+//        MimeMessageHelper helper = new MimeMessageHelper(mine, true,"utf-8");
+//
+//        helper.setFrom("739421672@qq.com");
+//        helper.setTo(user.getEmail());
+//        helper.setSubject("注册用户");
+//        helper.setText(user.getContent(),true);
 
-        helper.setFrom("739421672@qq.com");
-        helper.setTo(user.getEmail());
-        helper.setSubject("注册用户");
-        helper.setText(user.getContent(),true);
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("739421672@qq.com");
+        message.setTo(user.getEmail());
+        message.setSubject("注册邮件");
+        message.setText(url);
 
-        mailSender.send(mine);
+
+        mailSender.send(message);
     }
 //    public JavaMailSender getMailSender() {
 //        return mailSender;
