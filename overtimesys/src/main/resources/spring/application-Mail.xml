@@ -20,6 +20,7 @@
         <property name="host" value="smtp.qq.com"/>
         <property name="port" value="587"/>
         <property name="username" value="739421672@qq.com"/>
+<!--        这里要写授权码，不是邮箱登录密码-->
         <property name="password" value="fnpvpzcnrukwbbdb"/>
 <!--        <property name="javaMailProperties"/>-->
 <!--            <props>-->

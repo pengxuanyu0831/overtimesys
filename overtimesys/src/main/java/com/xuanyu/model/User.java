@@ -53,6 +53,7 @@ public class User implements Serializable {
     }
 
     public void setFromAddress(String fromAddress) {
+
         this.fromAddress = fromAddress;
     }
 

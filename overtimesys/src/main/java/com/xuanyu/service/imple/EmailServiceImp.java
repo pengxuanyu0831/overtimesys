@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class EmailServiceImp implements EmailService {
@@ -51,11 +53,23 @@ public class EmailServiceImp implements EmailService {
         message.setSubject("注册邮件");
         message.setText(url);
 
+        System.out.println("邮件发送完毕，请检查邮箱并激活账号");
+
 
         mailSender.send(message);
     }
 //    public JavaMailSender getMailSender() {
 //        return mailSender;
+//    }
+
+//    public void createSendData(User user, String content, String url) throws Exception {
+//        Map<String,Object> map= new HashMap<>();
+//
+//        map.put("name",user.getName());
+//        map.put(content,content);
+//        map.put("url",url);
+//
+//
 //    }
 
 }
