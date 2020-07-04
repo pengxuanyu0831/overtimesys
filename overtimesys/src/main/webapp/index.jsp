@@ -46,13 +46,13 @@
                     </div>
                     <div id = "login">
                         <a href = "${pageContext.request.contextPath}/users/findUser">查询用户</a>
-                        <hr>
 
                         <div>
                             <a href = "${pageContext.request.contextPath}/toRegister.jsp">去注册</a>
                         </div>
 
                         <hr>
+
 
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
