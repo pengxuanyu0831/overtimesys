@@ -51,6 +51,8 @@
                             <a href = "${pageContext.request.contextPath}/toRegister.jsp">去注册</a>
                         </div>
 
+                        <hr>
+
 
                         <form method="post" action="${pageContext.request.contextPath}/users/login">
                             <div class = "form-group">
@@ -70,6 +72,11 @@
                                     <input type ="password" name = "password">
                                 </div>
                                 </div>
+                            </div>
+
+                            <div class = "form-group">
+                                <input type="text" class="form-inline" name="captcha" id="inputCaptcha" placeholder="验证码">
+                                <img src="${request.contextPath}user/getGifCode" id="captcha"/>
                             </div>
                             <div class = "col-lg-4 col-lg=offset-2">
                                 <button type = "submit" class = "btn btn-primary" name ="login">登录</button>

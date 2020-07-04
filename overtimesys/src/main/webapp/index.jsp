@@ -73,6 +73,11 @@
                                 </div>
                                 </div>
                             </div>
+
+                            <div class = "form-group">
+                                <input type="text" class="form-inline" name="captcha" id="inputCaptcha" placeholder="验证码">
+                                <img src="${request.contextPath}user/getGifCode" id="captcha"/>
+                            </div>
                             <div class = "col-lg-4 col-lg=offset-2">
                                 <button type = "submit" class = "btn btn-primary" name ="login">登录</button>
                             </div>
