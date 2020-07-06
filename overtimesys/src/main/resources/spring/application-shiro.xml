@@ -32,6 +32,31 @@
                 /users/getGifCode =anon
             </value>
         </property>
+    </bean>
+<!--        凭证匹配器-->
+        <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+            <property name="hashAlgorithmName" value="md5"/>
+            <property name="hashIterations" value="2"/>
+        </bean>
+
+        <!-- securityManager安全管理器 -->
+        <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+
+            <!--自定义realm-->
+            <property name="realm" ref="userRealm"/>
+
+            <!--缓存管理器-->
+            <property name="cacheManager" ref="cacheManager"/>
+
+            <!-- 注入session管理器 -->
+            <property name="sessionManager" ref="sessionManager"/>
+
+            <!-- 记住我 -->
+            <property name="rememberMeManager" ref="rememberMeManager"/>
+
+        </bean>
+
+    <bean id="userRealm" class="com.xuanyu.">
 
     </bean>
 </beans>
