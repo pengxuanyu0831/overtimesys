@@ -1,5 +1,7 @@
 
 # 搭一个ssm博客系统
+
+maven 3.6.1
 idea 
 spring 4.3.5
 Mybaitis 3.4.4
