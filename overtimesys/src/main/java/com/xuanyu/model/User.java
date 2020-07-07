@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class User implements Serializable {
     // id 非空
-    private Integer id;
+    private String id;
     @NotEmpty(message = "{name.not.empty}")
     @Size(min=4,max=16,message = "{user.length.not.correct}")
     private String name;
@@ -81,11 +81,11 @@ public class User implements Serializable {
         this.content = content;
     }
 
-    public Integer getId(){
+    public String getId(){
         return  id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

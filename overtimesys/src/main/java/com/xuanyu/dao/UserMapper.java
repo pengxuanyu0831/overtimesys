@@ -38,8 +38,10 @@ public interface UserMapper{
     @Select("select * from user where id = #{id}")
     public User selectByPrimaryKey(String user);
 
+    @Select("select * from user where email = #{email}")
     User validatorEmailExist(String email);
 
+    @Select("select * from user where email = #{email}")
     User validatorUserExist(String email);
 
     User encryptedPassword(String password);
