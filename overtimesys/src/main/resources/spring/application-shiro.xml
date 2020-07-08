@@ -74,6 +74,11 @@
         <!-- 记住我cookie生效时间30天 -->
         <property name="maxAge" value="2592000" />
     </bean>
+<!--    自定义表单过滤器-->
+    <bean id="formAuthenticationFilter" class="">
+        <property name="nameParam" value="name"/>
+        <property name="passwordParam" value="password"/>
+    </bean>
 
 
 </beans>
