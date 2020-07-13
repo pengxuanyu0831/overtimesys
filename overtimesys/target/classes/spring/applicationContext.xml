@@ -50,6 +50,7 @@
     <!-- 在spring容器中配置mapper的扫描器产生的动态代理对象在spring的容器中自动注册，bean的id就是mapper类名（首字母小写）-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 指定扫描包的路径，就是mapper接口的路径，多个包中间以 半角逗号隔开   -->
+<!--        这个value配成mapper.xml文件，就是扫描mapper文件，如果是扫描dao层，就是现在这样-->
         <property name="basePackage" value="com.xuanyu.dao"/>
         <!-- 配置sqlSessionFactoryBeanName -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>

@@ -13,12 +13,6 @@
 <!--        认证失败跳转地址-->
         <property name="unauthorizedUrl" value="/pages/falselogin.jsp"/>
 
-        <property name="filters">
-            <map>
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
-            </map>
-        </property>
-
         <property name="filterChainDefinitions">
             <value>
 <!--                首先静态的页面资源肯定是放开的-->
@@ -30,6 +24,9 @@
                 /index.jsp = anon
                 /users/findUsers =anon
                 /users/getGifCode =anon
+
+                /users/insertUser = authc
+                /users/login = authc
             </value>
         </property>
     </bean>
@@ -55,6 +52,12 @@
             <property name="rememberMeManager" ref="rememberMeManager"/>
 
         </bean>
+    <!--  1.配置用于密码解密的HashedCredentialMatcher  -->
+<!--    可以用shiro自带的MD5加密，但是我写service的时候加了salt，就不再加密了，记录一下作为参考-->
+<!--    <bean id="matcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
+<!--        <property name="hashIterations" value="3"/>-->
+<!--        <property name="hashAlgorithmName" value="MD5"/>-->
+<!--    </bean>-->
 
     <bean id="userRealm" class="com.xuanyu.shiro.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
@@ -73,11 +76,6 @@
         <constructor-arg value="rememberMe" />
         <!-- 记住我cookie生效时间30天 -->
         <property name="maxAge" value="2592000" />
-    </bean>
-<!--    自定义表单过滤器-->
-    <bean id="formAuthenticationFilter" class="">
-        <property name="nameParam" value="name"/>
-        <property name="passwordParam" value="password"/>
     </bean>
 
 
