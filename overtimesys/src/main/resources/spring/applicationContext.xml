@@ -82,6 +82,7 @@
     </bean>
 
     <import resource="classpath:spring/application-Mail.xml"/>
+    <import resource="classpath:spring/application-shiro.xml"/>
 
 </beans>
 

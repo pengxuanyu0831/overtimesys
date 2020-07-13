@@ -41,7 +41,7 @@ public interface UserMapper{
     @Select("select * from user where email = #{email}")
     User validatorEmailExist(String email);
 
-    @Select("select * from user where email = #{email}")
+    @Select("select * from user where name = #{name}")
     User validatorUserExist(String email);
 
     User encryptedPassword(String password);

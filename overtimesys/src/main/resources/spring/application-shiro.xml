@@ -42,14 +42,11 @@
             <!--自定义realm-->
             <property name="realm" ref="userRealm"/>
 
-            <!--缓存管理器-->
-            <property name="cacheManager" ref="cacheManager"/>
+<!--            &lt;!&ndash;缓存管理器&ndash;&gt;-->
+<!--            <property name="cacheManager" ref="cacheManager"/>-->
 
             <!-- 注入session管理器 -->
-            <property name="sessionManager" ref="sessionManager"/>
-
-            <!-- 记住我 -->
-            <property name="rememberMeManager" ref="rememberMeManager"/>
+<!--            <property name="sessionManager" ref="sessionManager"/>-->
 
         </bean>
     <!--  1.配置用于密码解密的HashedCredentialMatcher  -->
@@ -63,20 +60,27 @@
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
 
-    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
-    </bean>
+<!--    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">-->
+<!--        <property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>-->
+<!--    </bean>-->
 
-    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
-        <property name="cookie" value="remberMycookie">
-        </property>
-    </bean>
-    <bean id="remberMycookie" class="org.apache.shiro.web.servlet.SimpleCookie">
-        <!-- rememberMe是cookie的名字 -->
-        <constructor-arg value="rememberMe" />
-        <!-- 记住我cookie生效时间30天 -->
-        <property name="maxAge" value="2592000" />
-    </bean>
+<!--    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">-->
+<!--        <property name="cookie" value="remberMycookie">-->
+<!--        </property>-->
+<!--    </bean>-->
+<!--    <bean id="remberMycookie" class="org.apache.shiro.web.servlet.SimpleCookie">-->
+<!--        &lt;!&ndash; rememberMe是cookie的名字 &ndash;&gt;-->
+<!--        <constructor-arg value="rememberMe" />-->
+<!--        &lt;!&ndash; 记住我cookie生效时间30天 &ndash;&gt;-->
+<!--        <property name="maxAge" value="2592000" />-->
+<!--    </bean>-->
+
+<!--    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">-->
+<!--        -->
+<!--        <property name="sessionIdUrlRewritingEnabled" value="false"/>-->
+<!--        <property name="globalSessionTimeout" value="800000"/>-->
+<!--        <property name="deleteInvalidSessions" value="true"/>-->
+<!--    </bean>-->
 
 
 </beans>
